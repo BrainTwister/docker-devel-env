@@ -11,30 +11,36 @@ The advantages are:
  * Easy provisioning 
  * Reproducable behaviors
 
+
 ## Requirements
 
  * docker
  * docker-compose (recommened)
 
-## Docker image structure
 
-The docker images are structured modular with the syntax
-`module1` - `version1` - `module2` - `version2` - `module3` - `version3` - `...`,
-where image `module1-version1-module2-version2-module3-version3` is using the image
-`module1-version1-module2-version2` as base. The name of the directory is used
-as docker image name, so it can be pulled with
+## Docker images
 
-```bash
-docker pull braintwister/module1-version1-module2-version2-module3-version3
-```
+Each directory correspond to an environment module. They can stick together as
+a chain:
 
-The base images will be set using the build-time variable `BASE_IMAGE`. For
+`module1` - `module2` - `module3` - `...`
+
+The image `module1-module2-module3` is using the image `module1-module2` as
+base, which will be set using the build-time variable `BASE_IMAGE`. For
 example the image 'ubuntu-16.04-cmake-3.10' will be build with
 
 ```bash
 cd cmake-3.10
 docker build -t braintwister/ubuntu-16.04-cmake-3.10 --build-arg BASE_IMAGE=ubuntu-16.04 .
 ```
+
+Please find a list of available images at [images.yml](images.yml).
+The docker images can be pulled with
+
+```bash
+docker pull braintwister/module1-module2-module3
+```
+
 
 ## Eclipse IDE
 
@@ -69,6 +75,7 @@ services:
 volumes:
   home:
 ```
+
 
 ## Jenkins build container
 
