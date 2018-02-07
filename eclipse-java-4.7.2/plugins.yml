@@ -1,0 +1,9 @@
+---
+docker:
+ - repo: http://download.eclipse.org/releases/oxygen/
+   units:
+    - org.eclipse.linuxtools.docker.feature.feature.group
+
+ - repo: http://download.eclipse.org/tools/cdt/releases/9.4/
+   units:
+    - org.eclipse.cdt.docker.launcher.feature.group
