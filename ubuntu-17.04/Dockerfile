@@ -1,6 +1,4 @@
-ARG BASE_IMAGE
-
-FROM braintwister/$BASE_IMAGE
+FROM ubuntu:17.04
 
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 

@@ -1,6 +1,4 @@
-ARG BASE_IMAGE
-
-FROM braintwister/$BASE_IMAGE
+FROM nvidia/cuda:9.1-devel
 
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
