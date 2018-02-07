@@ -31,7 +31,7 @@ example the image 'ubuntu-16.04-cmake-3.10' will be build with
 
 ```bash
 cd cmake-3.10
-docker build -t braintwister/ubuntu-16.04-cmake-3.10 --build-arg BASE_IMAGE=ubuntu-16.04 .
+docker build -t braintwister/ubuntu-16.04-cmake-3.10 --build-arg BASE_IMAGE=braintwister/ubuntu-16.04 .
 ```
 
 Please find a list of available images at [images.yml](images.yml).

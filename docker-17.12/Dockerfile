@@ -1,6 +1,5 @@
 ARG BASE_IMAGE
-
-FROM braintwister/$BASE_IMAGE
+FROM $BASE_IMAGE
 
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 

@@ -30,7 +30,7 @@ for image in yaml['images']:
     base       = '-'.join(image[:-1])
     module     = image[-1:][0] 
 
-    cmd = 'docker build -t braintwister/' + image_name + ' --build-arg BASE_IMAGE=' + base + ' .'
+    cmd = 'docker build -t braintwister/' + image_name + ' --build-arg BASE_IMAGE=braintwister/' + base + ' .'
     log = open(image_name + '.log', "w")
     p = subprocess.run(cmd, shell=True, cwd=module, stdout=log, stderr=subprocess.STDOUT)
 
