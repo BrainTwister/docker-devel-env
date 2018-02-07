@@ -5,7 +5,7 @@ FROM braintwister/$BASE_IMAGE
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
 RUN wget -O - http://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
- && echo "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial main" >> /etc/apt/sources.list \
+ && echo "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main" >> /etc/apt/sources.list \
  && apt-get update \
  && apt-get install -y clang-6.0 lldb-6.0 lld-6.0\
  && apt-get clean \
