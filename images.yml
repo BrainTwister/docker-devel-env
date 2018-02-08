@@ -9,9 +9,11 @@ base-images:
 images:
  - ['cuda-8.0-devel', 'cmake-3.10']
  - ['cuda-8.0-devel', 'cmake-3.10', 'gtest-1.8.0']
+ - ['cuda-8.0-devel', 'cmake-3.10', 'gtest-1.8.0', 'doxygen-1.8.13']
  - ['cuda-8.0-devel', 'cmake-3.10', 'gtest-1.8.0', 'doxygen-1.8.14']
  - ['cuda-9.1-devel', 'cmake-3.10']
  - ['cuda-9.1-devel', 'cmake-3.10', 'gtest-1.8.0']
+ - ['cuda-9.1-devel', 'cmake-3.10', 'gtest-1.8.0', 'doxygen-1.8.13']
  - ['cuda-9.1-devel', 'cmake-3.10', 'gtest-1.8.0', 'doxygen-1.8.14']
  - ['ubuntu-16.04', 'cmake-3.10']
  - ['ubuntu-16.04', 'cmake-3.10', 'gcc-5']
