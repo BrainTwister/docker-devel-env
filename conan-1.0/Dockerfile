@@ -13,5 +13,5 @@ RUN pip install --upgrade pip \
  && pip install -I setuptools \
  && pip install -I conan==1.0
 
-RUN conan remote add conan-community https://api.bintray.com/conan/conan-community/conan \
- && conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+ADD conan_add_repositories.sh /root/
+RUN /root/conan_add_repositories.sh

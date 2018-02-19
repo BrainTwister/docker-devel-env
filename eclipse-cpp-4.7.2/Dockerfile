@@ -24,16 +24,25 @@ ENV INSTALLATION_DIR /usr/local
 RUN curl -L "$DOWNLOAD_URL" | tar xz -C $INSTALLATION_DIR
 
 # Install plugins
-ADD install_plugins.py plugins.yml /
-RUN ./install_plugins.py
+ADD install_plugins.py plugins.yml /root/
+WORKDIR /root
+RUN /root/install_plugins.py
+WORKDIR /
 
 # Create eclipse user
 RUN mkdir -p /home/eclipse \
  && groupadd -r eclipse \
  && useradd -r -g eclipse -d /home/eclipse -s /sbin/nologin -c "Docker image user" eclipse
 RUN chown eclipse:eclipse /home/eclipse
-RUN usermod -aG docker eclipse
+
+# Add eclipse user to docker group
+RUN grep -qF 'docker' /etc/group && usermod -aG docker eclipse || true
+
+# Set eclipse user
 USER eclipse
 WORKDIR /home/eclipse
+
+# Add conan repositories of conan base module for eclipse user
+RUN [ -f /root/conan_add_repositories.sh ] && /root/conan_add_repositories.sh || true
 
 CMD $INSTALLATION_DIR/eclipse/eclipse
