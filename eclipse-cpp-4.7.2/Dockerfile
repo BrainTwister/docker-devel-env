@@ -24,10 +24,8 @@ ENV INSTALLATION_DIR /usr/local
 RUN curl -L "$DOWNLOAD_URL" | tar xz -C $INSTALLATION_DIR
 
 # Install plugins
-ADD install_plugins.py plugins.yml /root/
-WORKDIR /root
-RUN /root/install_plugins.py
-WORKDIR /
+ADD install_plugins.py plugins.yml /config/
+RUN /config/install_plugins.py -p /config/plugins.yml
 
 # Create eclipse user
 RUN mkdir -p /home/eclipse \
@@ -42,7 +40,5 @@ RUN grep -qF 'docker' /etc/group && usermod -aG docker eclipse || true
 USER eclipse
 WORKDIR /home/eclipse
 
-# Add conan repositories of conan base module for eclipse user
-RUN [ -f /root/conan_add_repositories.sh ] && /root/conan_add_repositories.sh || true
-
-CMD $INSTALLATION_DIR/eclipse/eclipse
+ADD entrypoint.sh /
+ENTRYPOINT ["/entrypoint.sh"]

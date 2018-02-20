@@ -13,5 +13,6 @@ RUN pip install --upgrade pip \
  && pip install -I setuptools \
  && pip install -I conan==1.0
 
-ADD conan_add_repositories.sh /root/
-RUN /root/conan_add_repositories.sh
+# Add conan repositories for root
+ADD conan_add_repositories.sh /config/
+RUN /config/conan_add_repositories.sh

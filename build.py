@@ -4,7 +4,7 @@ import argparse
 import subprocess
 import yaml
 
-parser = argparse.ArgumentParser(description='Process some integers.')
+parser = argparse.ArgumentParser(description='Build list of docker images.')
 parser.add_argument('-i, --images', dest='images', default='images.yml',
     help='List of docker images to build (default: images.yml)')
 
