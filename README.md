@@ -54,7 +54,7 @@ A ready-for-action eclipse IDE with
 installed can be started by
 
 ```bash
-docker run -e /tmp/.X11-unix:/tmp/.X11-unix:ro -D DISPLAY braintwister/ubuntu-16.04-cmake-3.10-gcc-7-conan-1.0-docker-17.12-eclipse-4.7.2
+docker run -e /tmp/.X11-unix:/tmp/.X11-unix:ro -D DISPLAY braintwister/ubuntu-16.04-cmake-3.10-gcc-7-conan-1.0-docker-17.12-eclipse-cpp-4.7.2
 ```
 
 or using docker-compose by
@@ -64,18 +64,44 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-16.04-cmake-3.10-gcc-7-conan-1.0-docker-17.12-eclipse-4.7.2
+    image: braintwister/ubuntu-16.04-cmake-3.10-gcc-7-conan-1.0-docker-17.12-eclipse-cpp-4.7.2
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro 
-      - /var/run/docker.sock:/var/run/docker.sock
-      - home:/home/eclipse:rw
+      - home:/home/eclipse
     environment:
       - DISPLAY
+    privileged: true
 
 volumes:
   home:
 ```
 
+The privileged container mode is needed for debugging with gdb.
+
+## Eclipse IDE for embedded development
+
+To use the [Eclipse CDT Arduino
+plugin](https://marketplace.eclipse.org/content/eclipse-c-ide-arduino) simply
+choose the eclipse-arduino module and bind the serial port of your Arduino
+connection (here: /dev/ttyACM0):
+
+```yaml
+version: "3"
+services:
+
+  eclipse:
+    image: braintwister/ubuntu-16.04-cmake-3.10-gcc-7-conan-1.0-docker-17.12-eclipse-arduino-4.7.2
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      - /dev/ttyACM0:/dev/ttyACM0
+      - home:/home/eclipse
+    environment:
+      - DISPLAY
+    privileged: true
+
+volumes:
+  home:
+```
 
 ## Jenkins build container
 
