@@ -1,21 +1,21 @@
 # Docker Development Environment
 
-Docker enables a great way for fast, small, reproducable, and portable software development environments.
+Docker enables a great way for fast, small, reproducible, and portable software development environments.
 
 The advantages are:
 
  * Fast build and execution of containers, especially compared to virtual machines
  * Very economical consumption of resources
- * Portability: Same environment on differerent machines and different plattform (also different operating systems)
+ * Portability: Same environment on different machines and different platforms (also different operating systems)
  * Identical environment for IDE and continuous integration
  * Easy provisioning 
- * Reproducable behaviors
+ * Reproducible behaviors
 
 
 ## Requirements
 
  * docker
- * docker-compose (recommened)
+ * docker-compose (recommended)
 
 
 ## Docker images
