@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM braintwister/ubuntu-16.04-docker-17.12
 
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
