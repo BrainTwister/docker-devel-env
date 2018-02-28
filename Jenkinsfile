@@ -3,7 +3,10 @@
 pipeline {
 
   agent {
-    label 'docker-devel'
+    dockerfile {
+      label 'docker-devel'
+      args '-v /var/run/docker.sock:/var/run/docker.sock'
+    }
   }
 
   options {
