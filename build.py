@@ -6,8 +6,9 @@ import sys
 import yaml
 
 parser = argparse.ArgumentParser(description='Build list of docker images.')
-parser.add_argument('-i, --images', dest='images', default='images.yml',
-    help='List of docker images to build (default: images.yml)')
+parser.add_argument('-i, --images', dest='images', default='images.yml', help='List of docker images to build (default: images.yml)')
+parser.add_argument('-v, --verbose', dest='verbose', action='store_true', help='Print more output')
+parser.set_defaults(verbose=False)
 
 args = parser.parse_args()
 yaml = yaml.load(open(args.images, 'r'));
@@ -22,8 +23,7 @@ if 'base-images' in yaml:
         print(image_name.ljust(90), end='', flush=True)
     
         cmd = 'docker build -t braintwister/' + image_name + ' .'
-        p = subprocess.Popen(cmd, shell=True, cwd=image_name, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        p.wait()
+        p = subprocess.run(cmd, shell=True, cwd=image_name, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     
         if p.returncode == 0:
             print(' ... passed')
@@ -44,8 +44,7 @@ if 'images' in yaml:
         module     = image[-1:][0] 
     
         cmd = 'docker build -t braintwister/' + image_name + ' --build-arg BASE_IMAGE=braintwister/' + base + ' .'
-        p = subprocess.Popen(cmd, shell=True, cwd=module, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        p.wait()
+        p = subprocess.run(cmd, shell=True, cwd=module, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     
         if p.returncode == 0:
             print(' ... passed')
