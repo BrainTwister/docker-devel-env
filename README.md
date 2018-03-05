@@ -27,7 +27,7 @@ a chain:
 
 The image `module1-module2-module3` is using the image `module1-module2` as
 base, which will be set using the build-time variable `BASE_IMAGE`. For
-example the image 'ubuntu-16.04-cmake-3.10' will be build with
+example the image `ubuntu-16.04-cmake-3.10` will be build with
 
 ```bash
 cd cmake-3.10
@@ -54,7 +54,7 @@ A ready-for-action eclipse IDE with
 installed can be started by
 
 ```bash
-docker run -e /tmp/.X11-unix:/tmp/.X11-unix:ro -D DISPLAY braintwister/ubuntu-16.04-cmake-3.10-gcc-7-conan-1.0-docker-17.12-eclipse-cpp-4.7.2
+docker run -e /tmp/.X11-unix:/tmp/.X11-unix:ro -D DISPLAY braintwister/ubuntu-16.04-cmake-3.10-gcc-7-conan-1.1-docker-17.12-eclipse-cpp-4.7.2
 ```
 
 or using docker-compose by
@@ -64,7 +64,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-16.04-cmake-3.10-gcc-7-conan-1.0-docker-17.12-eclipse-cpp-4.7.2
+    image: braintwister/ubuntu-16.04-cmake-3.10-gcc-7-conan-1.1-docker-17.12-eclipse-cpp-4.7.2
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro 
       - home:/home/eclipse
@@ -90,7 +90,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-16.04-cmake-3.10-gcc-7-conan-1.0-docker-17.12-eclipse-arduino-4.7.2
+    image: braintwister/ubuntu-16.04-cmake-3.10-gcc-7-conan-1.1-docker-17.12-eclipse-arduino-4.7.2
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
       - /dev/ttyACM0:/dev/ttyACM0
@@ -112,7 +112,7 @@ pipeline {
 
   agent {
     docker {
-      image 'braintwister/ubuntu-16.04-cmake-3.10-clang-6-conan-1.0'
+      image 'braintwister/ubuntu-16.04-cmake-3.10-clang-6-conan-1.1'
     }
   }
 
