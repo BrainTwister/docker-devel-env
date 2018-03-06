@@ -21,7 +21,7 @@ print(docker_push)
 
 # Log in to docker repository
 if docker_push == True:
-    cmd = 'docker login -u ' + args.user + ' -p ' + args.password
+    cmd = 'docker login -u ' + args.user + ' -p \'' + args.password + '\''
     subprocess.run(cmd, shell=True)
 
 # Build base images
@@ -48,7 +48,7 @@ if 'base-images' in yaml:
         else:
             print(' ... failed')
             log = open(image_name + '.log', "w")
-            log.write(p.stdout.read().decode('utf-8'))
+            log.write(p.stdout.decode('utf-8'))
             failed = True
 
 # Build images
@@ -78,7 +78,7 @@ if 'images' in yaml:
         else:
             print(' ... failed')
             log = open(image_name + '.log', "w")
-            log.write(p.stdout.read().decode('utf-8'))
+            log.write(p.stdout.decode('utf-8'))
             failed = True
 
 # Log out from docker repository
