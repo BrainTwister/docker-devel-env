@@ -47,8 +47,7 @@ if 'base-images' in yaml:
                 print()
         else:
             print(' ... failed')
-            log = open(image_name + '.log', "w")
-            log.write(p.stdout.decode('utf-8'))
+            print(p.stdout.decode('utf-8', errors='ignore'))
             failed = True
 
 # Build images
@@ -77,8 +76,7 @@ if 'images' in yaml:
                 print()
         else:
             print(' ... failed')
-            log = open(image_name + '.log', "w")
-            log.write(p.stdout.decode('utf-8'))
+            print(p.stdout.decode('utf-8', errors='ignore'))
             failed = True
 
 # Log out from docker repository
