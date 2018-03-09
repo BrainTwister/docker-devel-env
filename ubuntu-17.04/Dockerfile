@@ -6,6 +6,7 @@ RUN apt-get update \
  && apt-get install -y \
     curl \
     git \
+    git-svn \
     make \
     ninja-build \
     software-properties-common \

@@ -7,6 +7,7 @@ RUN apt-get update \
     curl \
     freeglut3-dev \
     git \
+    git-svn \
     libfreetype6-dev \
     libgl1-mesa-dev \
     libglew-dev \
