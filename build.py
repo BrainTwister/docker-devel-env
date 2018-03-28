@@ -18,6 +18,8 @@ yaml = yaml.load(open(args.images, 'r'));
 failed = False
 docker_push = bool(args.user) and bool(args.password)
 
+print(args.password)
+
 # Log in to docker repository
 if docker_push == True:
     cmd = 'echo \'' + args.password + '\'' + ' | docker login -u ' + args.user + ' --password-stdin'
