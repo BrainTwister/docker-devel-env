@@ -17,11 +17,10 @@ yaml = yaml.load(open(args.images, 'r'));
 
 failed = False
 docker_push = bool(args.user) and bool(args.password)
-print(docker_push)
 
 # Log in to docker repository
 if docker_push == True:
-    cmd = 'docker login -u ' + args.user + ' -p \'' + args.password + '\''
+    cmd = 'echo \'' + args.password + '\'' + ' | docker login -u ' + args.user + ' --password-stdin'
     subprocess.run(cmd, shell=True)
 
 # Build base images
