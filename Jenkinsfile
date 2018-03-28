@@ -17,7 +17,7 @@ pipeline {
     stage('Build') {
       steps {
         withCredentials([string(credentialsId: 'dockerhub', variable: 'PW1')]) {
-          sh './build.py -u bernddoser -p ${PW1}'
+          sh 'echo \'${PW1}\' | ./build.py -u bernddoser --password-stdin'
         }
       }
     }
