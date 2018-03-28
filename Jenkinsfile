@@ -16,7 +16,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub>',
+        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub',
                           usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
           sh './build.py -u $USERNAME -p $PASSWORD'
         }
