@@ -15,7 +15,7 @@ RUN apt-get update \
 
 WORKDIR /opt
 
-RUN wget http://ftp.stack.nl/pub/users/dimitri/doxygen-1.8.14.linux.bin.tar.gz \
+RUN wget https://sourceforge.net/projects/doxygen/files/rel-1.8.14/doxygen-1.8.14.linux.bin.tar.gz \
  && tar xf doxygen-1.8.14.linux.bin.tar.gz \
  && rm doxygen-1.8.14.linux.bin.tar.gz \
  && ln -sf /opt/doxygen-1.8.14/bin/doxygen /usr/bin/doxygen
