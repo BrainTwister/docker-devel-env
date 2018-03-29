@@ -33,13 +33,15 @@ if 'base-images' in yaml:
         print(image_name.ljust(90), end='', flush=True)
     
         cmd = 'docker build -t braintwister/' + image_name + ' .'
-        p = subprocess.run(cmd, shell=True, cwd=image_name, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        #p = subprocess.run(cmd, shell=True, cwd=image_name, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        p = subprocess.run(cmd, shell=True, cwd=image_name)
     
         if p.returncode == 0:
             print(' ... build passed', end='', flush=True)
             if docker_push == True:
                 cmd = 'docker push braintwister/' + image_name
-                p2 = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                #p2 = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                p2 = subprocess.run(cmd, shell=True)
                 if p2.returncode == 0:
                     print(' ... push passed')
                 else:
@@ -48,7 +50,7 @@ if 'base-images' in yaml:
                 print()
         else:
             print(' ... failed')
-            print(p.stdout.decode('utf-8', errors='ignore'))
+            #print(p.stdout.decode('utf-8', errors='ignore'))
             failed = True
 
 # Build images
@@ -62,13 +64,15 @@ if 'images' in yaml:
         module     = image[-1:][0] 
     
         cmd = 'docker build -t braintwister/' + image_name + ' --build-arg BASE_IMAGE=braintwister/' + base + ' .'
-        p = subprocess.run(cmd, shell=True, cwd=module, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        #p = subprocess.run(cmd, shell=True, cwd=module, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        p = subprocess.run(cmd, shell=True, cwd=module)
 
         if p.returncode == 0:
             print(' ... build passed', end='', flush=True)
             if docker_push == True:
                 cmd = 'docker push braintwister/' + image_name
-                p2 = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                #p2 = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                p2 = subprocess.run(cmd, shell=True)
                 if p2.returncode == 0:
                     print(' ... push passed')
                 else:
@@ -77,7 +81,7 @@ if 'images' in yaml:
                 print()
         else:
             print(' ... failed')
-            print(p.stdout.decode('utf-8', errors='ignore'))
+            #print(p.stdout.decode('utf-8', errors='ignore'))
             failed = True
 
 # Log out from docker repository
