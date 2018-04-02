@@ -5,90 +5,94 @@ import subprocess
 import sys
 import yaml
 
-parser = argparse.ArgumentParser(description='Build list of docker images.')
-parser.add_argument('-i, --images', dest='images', default='images.yml', help='List of docker images to build (default: images.yml)')
-parser.add_argument('-v, --verbose', dest='verbose', action='store_true', help='Print more output')
-parser.add_argument('-u, --user', dest='user', help='Username for docker repository')
-parser.add_argument('-p, --password', dest='password', help='Password for docker repository')
-parser.set_defaults(verbose=False)
+def build_images(image_type, image_list, args, docker_push):
 
-args = parser.parse_args()
-yaml = yaml.load(open(args.images, 'r'));
+    failed = False
+    if image_type in image_list:
+        for image in image_list[image_type]:
 
-failed = False
-docker_push = bool(args.user) and bool(args.password)
+            image_name = '-'.join(image)
+            if args.verbose == 1:
+                print(image_name.ljust(90), end='', flush=True)
+            elif args.verbose > 1:
+                print('Build ' + image_name)
 
-print(args.password)
+            base   = '-'.join(image[:-1])
+            module = image[-1:][0] 
 
-# Log in to docker repository
-if docker_push == True:
-    cmd = 'echo \'' + args.password + '\'' + ' | docker login -u ' + args.user + ' --password-stdin'
-    subprocess.run(cmd, shell=True)
+            cmd = 'docker build -t braintwister/' + image_name
+            if image_type == 'images':
+                cmd += ' --build-arg BASE_IMAGE=braintwister/' + base
+            cmd += ' .'
 
-# Build base images
-if 'base-images' in yaml:
-    for base_image in yaml['base-images']:
-    
-        image_name = '-'.join(base_image)
-        print(image_name.ljust(90), end='', flush=True)
-    
-        cmd = 'docker build -t braintwister/' + image_name + ' .'
-        #p = subprocess.run(cmd, shell=True, cwd=image_name, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        p = subprocess.run(cmd, shell=True, cwd=image_name)
-    
-        if p.returncode == 0:
-            print(' ... build passed', end='', flush=True)
-            if docker_push == True:
-                cmd = 'docker push braintwister/' + image_name
-                #p2 = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-                p2 = subprocess.run(cmd, shell=True)
-                if p2.returncode == 0:
-                    print(' ... push passed')
-                else:
-                    print(' ... push failed')
+            if args.verbose > 1:
+                print('Build command: ' + cmd)
+
+            p = subprocess.Popen(cmd, shell=True, cwd=module, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+            if args.verbose > 1:
+                print(p.communicate()[0].decode('ascii', errors='ignore'))
+
+            p.wait()
+            if p.returncode == 0:
+                if args.verbose == 1:
+                    print(' passed')
+                elif args.verbose > 1:
+                    print('Build successful')
+
+                if docker_push == True:
+
+                    cmd = 'docker push braintwister/' + image_name
+
+                    if args.verbose > 1:
+                        print('Push command: ' + cmd)
+
+                    p2 = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+                    if p2.returncode == 0:
+                        print('Push sucessful')
+                    else:
+                        print('Push failed')
             else:
-                print()
-        else:
-            print(' ... failed')
-            #print(p.stdout.decode('utf-8', errors='ignore'))
-            failed = True
+                print('Build failed')
+                if args.verbose <= 1:
+                    print(p.communicate()[0].decode('ascii', errors='ignore'))
+    return failed
 
-# Build images
-if 'images' in yaml:
-    for image in yaml['images']:
-    
-        image_name = '-'.join(image)
-        print(image_name.ljust(90), end='', flush=True)
-    
-        base       = '-'.join(image[:-1])
-        module     = image[-1:][0] 
-    
-        cmd = 'docker build -t braintwister/' + image_name + ' --build-arg BASE_IMAGE=braintwister/' + base + ' .'
-        #p = subprocess.run(cmd, shell=True, cwd=module, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        p = subprocess.run(cmd, shell=True, cwd=module)
+def main():
 
-        if p.returncode == 0:
-            print(' ... build passed', end='', flush=True)
-            if docker_push == True:
-                cmd = 'docker push braintwister/' + image_name
-                #p2 = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-                p2 = subprocess.run(cmd, shell=True)
-                if p2.returncode == 0:
-                    print(' ... push passed')
-                else:
-                    print(' ... push failed')
-            else:
-                print()
-        else:
-            print(' ... failed')
-            #print(p.stdout.decode('utf-8', errors='ignore'))
-            failed = True
+    parser = argparse.ArgumentParser(description='Build list of docker images.')
+    parser.add_argument('-i', '--images', default='images.yml', help='List of docker images to build (default: images.yml)')
+    parser.add_argument('-v', '--verbose', action='count', default=0, help='Print more output (two levels)')
+    parser.add_argument('-u', '--user', help='Username for docker repository')
+    parser.add_argument('-p', '--password', help='Password for docker repository')
 
-# Log out from docker repository
-if docker_push == True:
-    cmd = 'docker logout'
-    subprocess.run(cmd, shell=True)
+    args = parser.parse_args()
+    image_list = yaml.load(open(args.images, 'r'));
 
-if failed == True:
-    sys.exit(1)
+    docker_push = bool(args.user) and bool(args.password)
+
+    # Log in to docker registry
+    if docker_push == True:
+        if args.verbose > 0:
+            print('Login DockerHub')
+        cmd = 'echo \'' + args.password + '\'' + ' | docker login -u ' + args.user + ' --password-stdin'
+        subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+    failed = False
+    failed |= build_images('base-images', image_list=image_list, args=args, docker_push=docker_push)
+    failed |= build_images('images', image_list=image_list, args=args, docker_push=docker_push)
+
+    # Log out from docker registry
+    if docker_push == True:
+        if args.verbose > 0:
+            print('Logout DockerHub')
+        cmd = 'docker logout'
+        subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+    if failed == True:
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()
 
