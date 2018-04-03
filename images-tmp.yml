@@ -1,6 +1,0 @@
----
-base-images:
- - ['ubuntu-16.04']
-images:
- - ['ubuntu-16.04', 'cmake-3.11']
- - ['ubuntu-16.04', 'cmake-3.11', 'gtest-1.8.0']
