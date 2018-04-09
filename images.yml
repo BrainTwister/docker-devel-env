@@ -15,6 +15,7 @@ images:
  - ['cuda-9.1-devel', 'cmake-3.11', 'gtest-1.8.0']
  - ['cuda-9.1-devel', 'cmake-3.11', 'gtest-1.8.0', 'doxygen-1.8.13']
  - ['cuda-9.1-devel', 'cmake-3.11', 'gtest-1.8.0', 'doxygen-1.8.14']
+ - ['cuda-9.1-devel', 'cmake-3.11', 'gtest-1.8.0', 'eclipse-cpp-4.7.3']
  - ['cuda-9.1-devel', 'cmake-3.11', 'gcc-7']
  - ['cuda-9.1-devel', 'cmake-3.11', 'gcc-7', 'conan-1.2']
  - ['cuda-9.1-devel', 'cmake-3.11', 'gcc-7', 'conan-1.2', 'eclipse-cpp-4.7.3']
