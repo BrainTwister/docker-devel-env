@@ -76,7 +76,38 @@ volumes:
   home:
 ```
 
-The privileged container mode is needed for debugging with gdb.
+The mount of the X11 socket file (/tmp/.X11-unix) and the definition of the
+environment variable `DISPLAY` induce the the application within the conainer
+to send the rendering instructions to the host X server. To allow the
+container to use the host display, the command `xhost +local:` must be executed
+on the host before starting the container. The privileged mode is needed for
+debugging with gdb.
+
+## Eclipse IDE with CUDA
+
+First of all [nvidia-docker](https://github.com/NVIDIA/nvidia-docker) must be
+installed to connect the host GPU card to the container.
+
+```yaml
+version: "2.3"
+services:
+
+  eclipse:
+    image: braintwister/ubuntu-16.04-cuda-9.1-cmake-3.11-gcc-7-conan-1.2-eclipse-cpp-4.7.3
+    runtime: nvidia
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      - home:/home/eclipse
+    environment:
+      - DISPLAY
+    privileged: true
+
+volumes:
+  home:
+```
+
+For nvidia-docker the runtime must be set to `nvidia`. At the moment for
+docker-compose this is only possible for version 2.3.
 
 ## Eclipse IDE for embedded development
 
