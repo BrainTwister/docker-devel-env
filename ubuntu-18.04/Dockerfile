@@ -14,3 +14,6 @@ RUN apt-get update \
     wget \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
+
+COPY aliases /tmp/
+RUN cat /tmp/aliases >> /etc/bash.bashrc && rm -f /tmp/aliases
