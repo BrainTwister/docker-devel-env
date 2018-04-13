@@ -42,3 +42,5 @@ WORKDIR /home/eclipse
 
 ADD entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
+
+CMD ["$INSTALLATION_DIR/eclipse/eclipse"]

@@ -6,4 +6,4 @@ then
   /config/conan_add_repositories.sh
 fi
 
-$INSTALLATION_DIR/eclipse/eclipse
+$@
