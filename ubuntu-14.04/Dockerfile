@@ -3,7 +3,7 @@ FROM ubuntu:14.04
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
 RUN apt-get update \
- && apt-get install -y \
+ && apt-get install -y --no-install-recommends \
     curl \
     git \
     git-svn \
