@@ -1,29 +1,10 @@
 ---
-uninstall:
- - org.eclipse.cdt.autotools.feature.group
- - org.eclipse.cdt.feature.group
- - org.eclipse.cdt.build.crossgcc.feature.group
- - org.eclipse.cdt.debug.ui.memory.feature.group
- - org.eclipse.cdt.launch.remote.feature.group
- - org.eclipse.cdt.debug.standalone.feature.group
-
 install:
-  cdt:
+  cmake4eclipse:
    - repo: http://download.eclipse.org/releases/oxygen/
      units:
-      - org.eclipse.debug.ui.feature.group
-      - org.eclipse.remote.feature.group
+      - org.eclipse.ui.feature.group
 
-   - repo: http://download.eclipse.org/tools/cdt/releases/9.4/
-     units:
-      - org.eclipse.cdt.autotools.feature.group
-      - org.eclipse.cdt.feature.group
-      - org.eclipse.cdt.build.crossgcc.feature.group
-      - org.eclipse.cdt.debug.ui.memory.feature.group
-      - org.eclipse.cdt.launch.remote.feature.group
-      - org.eclipse.cdt.debug.standalone.feature.group
-
-  cmake4eclipse:
    - repo: https://raw.githubusercontent.com/15knots/cmake4eclipse/master/releng/comp-update/
      units:
       - de.marw.cdt.cmake.feature.group
