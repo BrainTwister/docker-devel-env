@@ -13,7 +13,7 @@ plugins = yaml.load(open(args.plugins, 'r'));
 
 # Uninstall plugins
 if 'unistall' in plugins:
-  cmd = '/usr/local/cuda/bin/nsight -noSplash -clean -purgeHistory' \
+  cmd = '$INSTALLATION_DIR/eclipse/eclipse -noSplash -clean -purgeHistory' \
       + ' -application org.eclipse.equinox.p2.director -destination $INSTALLATION_DIR/eclipse' \
       + ' -uninstallIU '  + ','.join(plugins['uninstall']) \
 
@@ -24,7 +24,7 @@ if 'install' in plugins:
   for plugin_name, feature_group in plugins['install'].items():
     print('Install ', plugin_name)
     for features in feature_group:
-      cmd = '/usr/local/cuda/bin/nsight -noSplash -clean -purgeHistory' \
+      cmd = '$INSTALLATION_DIR/eclipse/eclipse -noSplash -clean -purgeHistory' \
           + ' -application org.eclipse.equinox.p2.director -destination $INSTALLATION_DIR/eclipse' \
           + ' -repository ' + features['repo'] \
           + ' -installIU '  + ','.join(features['units'])
