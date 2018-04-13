@@ -20,7 +20,7 @@ if 'unistall' in plugins:
   subprocess.run(cmd, shell=True, check=True)
 
 # Install plugins
-if 'istall' in plugins:
+if 'install' in plugins:
   for plugin_name, feature_group in plugins['install'].items():
     print('Install ', plugin_name)
     for features in feature_group:
