@@ -19,7 +19,7 @@ pipeline {
       steps {
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub',
                           usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-          sh './build.py -vv -u $USERNAME -p $PASSWORD'
+          sh './build.py -v -u $USERNAME -p $PASSWORD'
         }
       }
     }
