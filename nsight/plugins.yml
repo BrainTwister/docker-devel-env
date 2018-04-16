@@ -1,33 +1,22 @@
 ---
 install:
   cmake4eclipse:
-   - repo: http://download.eclipse.org/releases/oxygen/
-     units:
-      - org.eclipse.ui.feature.group
-
-   - repo: https://raw.githubusercontent.com/15knots/cmake4eclipse/master/releng/comp-update/
+   - repo:
+      - http://download.eclipse.org/releases/juno/
+      - https://raw.githubusercontent.com/15knots/cmake4eclipse/master/releng/comp-update/
      units:
       - de.marw.cdt.cmake.feature.group
 
   cmakeed:
-   - repo: http://download.eclipse.org/releases/oxygen/
-     units:
-      - org.eclipse.core.runtime.feature.group
-
-   - repo: https://raw.githubusercontent.com/15knots/cmakeed/master/cmakeed-update/
+   - repo:
+      - http://download.eclipse.org/releases/juno/
+      - https://raw.githubusercontent.com/15knots/cmakeed/master/cmakeed-update/
      units:
       - com.cthing.cmakeed.feature.feature.group
 
-  docker:
-   - repo: http://download.eclipse.org/releases/oxygen/
-     units:
-      - org.eclipse.linuxtools.docker.feature.feature.group
-
-   - repo: http://download.eclipse.org/tools/cdt/releases/9.4/
-     units:
-      - org.eclipse.cdt.docker.launcher.feature.group
-
   PyDev:
-   - repo: http://www.pydev.org/updates/ 
+   - repo:
+      - http://download.eclipse.org/releases/juno/
+      - http://www.pydev.org/updates/ 
      units:
       - org.python.pydev.feature.feature.group
