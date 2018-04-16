@@ -1,22 +1,22 @@
 ---
+general_repos:
+ - http://download.eclipse.org/releases/juno/
+
 install:
   cmake4eclipse:
-   - repo:
-      - http://download.eclipse.org/releases/juno/
+   - repos:
       - https://raw.githubusercontent.com/15knots/cmake4eclipse/master/releng/comp-update/
      units:
       - de.marw.cdt.cmake.feature.group
 
   cmakeed:
-   - repo:
-      - http://download.eclipse.org/releases/juno/
+   - repos:
       - https://raw.githubusercontent.com/15knots/cmakeed/master/cmakeed-update/
      units:
       - com.cthing.cmakeed.feature.feature.group
 
   PyDev:
-   - repo:
-      - http://download.eclipse.org/releases/juno/
+   - repos:
       - http://www.pydev.org/updates/ 
      units:
       - org.python.pydev.feature.feature.group

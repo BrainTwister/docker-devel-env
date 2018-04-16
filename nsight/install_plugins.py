@@ -26,7 +26,7 @@ if 'install' in plugins:
     for features in feature_group:
       cmd = '/usr/local/cuda/bin/nsight -noSplash -clean -purgeHistory' \
           + ' -application org.eclipse.equinox.p2.director -destination /usr/local/cuda/libnsight' \
-          + ' -repository ' + ','.join(features['repo']) \
+          + ' -repository ' + ','.join(plugins['general_repos']) + ',' + ','.join(features['repos']) \
           + ' -installIU '  + ','.join(features['units'])
     
       subprocess.run(cmd, shell=True, check=True)
