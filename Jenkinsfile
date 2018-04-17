@@ -4,13 +4,13 @@ pipeline {
 
   agent {
     dockerfile {
-      label 'docker-devel'
       args '-v /var/run/docker.sock:/var/run/docker.sock -e DOCKER_CONFIG=/tmp'
     }
   }
 
   options {
     timeout(time: 24, unit: 'HOURS')
+    retry(3)
     disableConcurrentBuilds()
   }
 
