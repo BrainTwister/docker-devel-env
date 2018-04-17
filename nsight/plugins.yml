@@ -15,8 +15,8 @@ install:
      units:
       - com.cthing.cmakeed.feature.feature.group
 
-  PyDev:
-   - repos:
-      - http://www.pydev.org/updates/ 
-     units:
-      - org.python.pydev.feature.feature.group
+# PyDev:
+#  - repos:
+#     - http://www.pydev.org/updates/ 
+#    units:
+#     - org.python.pydev.feature.feature.group
