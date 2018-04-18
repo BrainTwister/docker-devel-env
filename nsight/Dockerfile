@@ -15,8 +15,7 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install --upgrade pip \
- && pip3 install -I pyyaml==3.12 
+RUN pip3 install -I pyyaml==3.12 
 
 # Install plugins
 ADD install_plugins.py plugins.yml /config/

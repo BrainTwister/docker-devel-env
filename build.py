@@ -53,10 +53,12 @@ def build_images(image_type, image_list, args, docker_push):
                         print('Push sucessful')
                     else:
                         print('Push failed')
+                        failed = True
             else:
                 print('Build failed')
                 if args.verbose <= 1:
                     print(p.communicate()[0].decode('ascii', errors='ignore'))
+                failed = True
     return failed
 
 def main():

@@ -15,8 +15,7 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install --upgrade pip \
- && pip3 install -I pyyaml==3.12 
+RUN pip3 install -I pyyaml==3.12 
 
 ENV DOWNLOAD_URL http://download.eclipse.org/technology/epp/downloads/release/oxygen/2/eclipse-cpp-oxygen-2-linux-gtk-x86_64.tar.gz
 ENV INSTALLATION_DIR /usr/local
@@ -43,4 +42,4 @@ WORKDIR /home/eclipse
 ADD entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["$INSTALLATION_DIR/eclipse/eclipse"]
+CMD "$INSTALLATION_DIR/eclipse/eclipse"

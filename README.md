@@ -77,11 +77,11 @@ volumes:
 ```
 
 The mount of the X11 socket file (/tmp/.X11-unix) and the definition of the
-environment variable `DISPLAY` induce the the application within the container
-to send the rendering instructions to the host X server. To allow the
-container to use the host display, the command `xhost +local:` must be executed
-on the host before starting the container. The privileged mode is needed for
-debugging with gdb.
+environment variable `DISPLAY` induce the application within the conainer to
+send the rendering instructions to the host X server. To allow the container to
+use the host display, the command `xhost +local:` must be executed on the host
+before starting the container. The privileged mode is needed for debugging with
+gdb.
 
 
 ## Eclipse IDE with CUDA
