@@ -77,7 +77,7 @@ volumes:
 ```
 
 The mount of the X11 socket file (/tmp/.X11-unix) and the definition of the
-environment variable `DISPLAY` induce the the application within the conainer
+environment variable `DISPLAY` induce the the application within the container
 to send the rendering instructions to the host X server. To allow the
 container to use the host display, the command `xhost +local:` must be executed
 on the host before starting the container. The privileged mode is needed for
@@ -86,8 +86,16 @@ debugging with gdb.
 
 ## Eclipse IDE with CUDA
 
-First of all [nvidia-docker](https://github.com/NVIDIA/nvidia-docker) must be
-installed to connect the host GPU card to the container.
+First of all [nvidia-docker](https://github.com/NVIDIA/nvidia-docker) version 2
+must be installed and the runtime attribute must be set to `nvidia`, that the
+container get access to the host GPU card.  The nvidia runtime attribute is
+currently only available at docker-compose version 2.3.
+
+For CUDA development the NVIDIA IDE
+[nsight](https://developer.nvidia.com/nsight-eclipse-edition) is highly
+recommended, because it provides special support for code editing, debugging,
+and profiling. The version of nsight is not adjustable, as it depends to the
+version of the cuda module.
 
 ```yaml
 version: "2.3"
@@ -106,11 +114,6 @@ services:
 volumes:
   home:
 ```
-
-The runtime must be set to `nvidia`, which is currently only supported by
-docker-compose version 2.3. As IDE NVIDIA nsight is recommended, which has
-special support for CUDA code editing, debugging, and profiling. The nsight
-version depends to the cuda version.
 
 
 ## Eclipse IDE for embedded development
