@@ -6,11 +6,10 @@ then
   /config/conan_add_repositories.sh
 fi
 
-echo "USER_ID : $USER_ID"
-
 # Add local user
-if [ -n ${USER_ID} ]
-then
+if [ "$EUID" == "0" ] && [ "$USER_ID" != "0" ]
+then 
+  USER_ID=${USER_ID:-9001}
   GROUP_ID=${GROUP_ID:-${USER_ID}}
   USER_NAME=${USER_NAME:-user}
   GROUP_NAME=${GROUP_NAME:-user}
@@ -22,10 +21,15 @@ then
 
   groupadd -g $GROUP_ID $GROUP_NAME
   useradd -s /bin/bash -g $GROUP_ID -u $USER_ID -o -c "container user" -m $USER_NAME
+  chown $USER_NAME:$GROUP_NAME /home/$USER_NAME
+
   export HOME=/home/$USER_NAME
+  cd $HOME
+
+  # Add user to docker group
+  RUN grep -qF 'docker' /etc/group && usermod -aG docker $USER_NAME || true
 
   exec /usr/local/bin/gosu $USER_NAME "$@"
 else
   $@
 fi
-

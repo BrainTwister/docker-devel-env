@@ -26,9 +26,6 @@ then
   export HOME=/home/$USER_NAME
   cd $HOME
 
-  # Add user to docker group
-  RUN grep -qF 'docker' /etc/group && usermod -aG docker $USER_NAME || true
-
   exec /usr/local/bin/gosu $USER_NAME "$@"
 else
   $@

@@ -4,10 +4,12 @@ FROM $BASE_IMAGE
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
 RUN apt-get update \
- && apt-get install -y \
+ && apt-get install -y --no-install-recommends \
     curl \
+    firefox \
     libgtk2.0-0 \
     make \
+    python3-setuptools \
     openjdk-8-jdk \
     python3-pip \
  && apt-get clean \
@@ -20,23 +22,11 @@ ENV INSTALLATION_DIR /usr/local
 
 RUN curl -L "$DOWNLOAD_URL" | tar xz -C $INSTALLATION_DIR
 
-ADD install_plugins.py \
-    plugins.yml \
-    /root/
+# Install plugins
+ADD install_plugins.py plugins.yml /config/
+RUN /config/install_plugins.py -p /config/plugins.yml
 
-WORKDIR /root
-RUN ./install_plugins.py
-WORKDIR /
+ADD entrypoint.sh /
+ENTRYPOINT ["/entrypoint.sh"]
 
-# Create eclipse user
-RUN mkdir -p /home/eclipse \
- && groupadd -r eclipse \
- && useradd -r -g eclipse -d /home/eclipse -s /sbin/nologin -c "Docker image user" eclipse
-RUN chown eclipse:eclipse /home/eclipse
-USER eclipse
-WORKDIR /home/eclipse
-
-ENV CONAN_USER_HOME /home/eclipse
-RUN conan remote add conan-community https://api.bintray.com/conan/conan-community/conan
-
-CMD $INSTALLATION_DIR/eclipse/eclipse
+CMD "$INSTALLATION_DIR/eclipse/eclipse"

@@ -1,7 +1,9 @@
 ---
+general_repos:
+ - http://download.eclipse.org/releases/oxygen/
+
 arduino:
- - repo: http://download.eclipse.org/releases/oxygen/
-   units:
+ - units:
     - org.eclipse.remote.serial.feature.group
     - org.eclipse.remote.console.feature.group
     - org.eclipse.remote.feature.group
@@ -18,10 +20,6 @@ cmake:
     - com.cthing.cmakeed.feature.feature.group
  
 docker:
- - repo: http://download.eclipse.org/releases/oxygen/
-   units:
-    - org.eclipse.linuxtools.docker.feature.feature.group
-
  - repo: http://download.eclipse.org/tools/cdt/releases/9.4/
    units:
     - org.eclipse.cdt.docker.launcher.feature.group

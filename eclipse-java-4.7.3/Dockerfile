@@ -4,10 +4,12 @@ FROM $BASE_IMAGE
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
 RUN apt-get update \
- && apt-get install -y \
+ && apt-get install -y --no-install-recommends \
     curl \
+    firefox \
     libgtk2.0-0 \
     make \
+    python3-setuptools \
     openjdk-8-jdk \
     python3-pip \
  && apt-get clean \
@@ -21,7 +23,10 @@ ENV INSTALLATION_DIR /usr/local
 RUN curl -L "$DOWNLOAD_URL" | tar xz -C $INSTALLATION_DIR
 
 # Install plugins
-ADD install_plugins.py plugins.yml /
-RUN ./install_plugins.py
+ADD install_plugins.py plugins.yml /config/
+RUN /config/install_plugins.py -p /config/plugins.yml
 
-CMD $INSTALLATION_DIR/eclipse/eclipse
+ADD entrypoint.sh /
+ENTRYPOINT ["/entrypoint.sh"]
+
+CMD "$INSTALLATION_DIR/eclipse/eclipse"

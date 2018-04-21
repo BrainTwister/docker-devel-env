@@ -10,14 +10,7 @@ RUN wget "$DOWNLOAD_URL" -O visual-studio-code.deb \
  && apt-get install -f \
  && dpkg -i visual-studio-code.deb
 
-# Create user
-RUN mkdir -p /home/coder \
- && groupadd -r coder \
- && useradd -r -g coder -d /home/coder -s /sbin/nologin -c "Docker image user" coder
-RUN chown coder:coder /home/coder
+ADD entrypoint.sh /
+ENTRYPOINT ["/entrypoint.sh"]
 
-# Set user and home
-USER coder
-WORKDIR /home/coder
-
-ENTRYPOINT ["code"]
+CMD "code"

@@ -26,19 +26,6 @@ RUN curl -L "$DOWNLOAD_URL" | tar xz -C $INSTALLATION_DIR
 ADD install_plugins.py plugins.yml /config/
 RUN /config/install_plugins.py -p /config/plugins.yml
 
-# Create eclipse user
-RUN mkdir -p /home/eclipse \
- && groupadd -r eclipse \
- && useradd -r -g eclipse -d /home/eclipse -s /sbin/nologin -c "Docker image user" eclipse
-RUN chown eclipse:eclipse /home/eclipse
-
-# Add eclipse user to docker group
-RUN grep -qF 'docker' /etc/group && usermod -aG docker eclipse || true
-
-# Set eclipse user
-USER eclipse
-WORKDIR /home/eclipse
-
 ADD entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
 
