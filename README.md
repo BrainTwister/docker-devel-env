@@ -55,7 +55,7 @@ A ready-for-action eclipse IDE with
 installed can be started by
 
 ```bash
-docker run -e /tmp/.X11-unix:/tmp/.X11-unix:ro -D DISPLAY --privileged \
+docker run -e /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY --privileged \
   braintwister/ubuntu-16.04-cmake-3.11-gcc-7-conan-1.2-docker-18.03-eclipse-cpp-4.7.3
 ```
 
