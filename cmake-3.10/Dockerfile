@@ -3,8 +3,13 @@ FROM $BASE_IMAGE
 
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
+ARG MINOR_VERSION=3.10
+ARG PATCH_VERSION=3
+ARG VERSION="$MINOR_VERSION.$PATCH_VERSION"
+ARG ARCH="Linux-x86_64"
+
 RUN cd opt \
- && wget https://cmake.org/files/v3.10/cmake-3.10.3-Linux-x86_64.tar.gz \
- && tar xf cmake-3.10.3-Linux-x86_64.tar.gz \
- && rm cmake-3.10.3-Linux-x86_64.tar.gz \
- && ln -sf /opt/cmake-3.10.3-Linux-x86_64/bin/cmake /usr/bin/cmake
+ && wget https://cmake.org/files/v$MINOR_VERSION/cmake-$VERSION-$ARCH.tar.gz \
+ && tar xf cmake-$VERSION-$ARCH.tar.gz \
+ && rm cmake-$VERSION-$ARCH.tar.gz \
+ && ln -sf /opt/cmake-$VERSION-$ARCH/bin/cmake /usr/bin/cmake
