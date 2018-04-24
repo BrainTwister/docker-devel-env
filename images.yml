@@ -6,6 +6,10 @@ base-images:
 
 images:
  - ['ubuntu-16.04', 'cmake-3.11']
+ - ['ubuntu-16.04', 'cmake-3.11', 'gcc-4.9']
+ - ['ubuntu-16.04', 'cmake-3.11', 'gcc-4.9', 'gtest-1.8.0']
+ - ['ubuntu-16.04', 'cmake-3.11', 'gcc-4.9', 'gtest-1.8.0', 'doxygen-1.8.13']
+ - ['ubuntu-16.04', 'cmake-3.11', 'gcc-4.9', 'gtest-1.8.0', 'eclipse-cpp-4.7.3']
  - ['ubuntu-16.04', 'cmake-3.11', 'gcc-5']
  - ['ubuntu-16.04', 'cmake-3.11', 'gcc-5', 'conan-1.2']
  - ['ubuntu-16.04', 'cmake-3.11', 'gcc-5', 'conan-1.2', 'docker-18.03']
