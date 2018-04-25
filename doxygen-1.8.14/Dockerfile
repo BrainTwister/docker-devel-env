@@ -13,11 +13,10 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /opt
+ARG VERSION=1.8.14
 
-RUN wget https://sourceforge.net/projects/doxygen/files/rel-1.8.14/doxygen-1.8.14.linux.bin.tar.gz \
- && tar xf doxygen-1.8.14.linux.bin.tar.gz \
- && rm doxygen-1.8.14.linux.bin.tar.gz \
- && ln -sf /opt/doxygen-1.8.14/bin/doxygen /usr/bin/doxygen
-
-WORKDIR /
+RUN wget https://sourceforge.net/projects/doxygen/files/rel-$VERSION/doxygen-$VERSION.linux.bin.tar.gz \
+ && tar xf doxygen-$VERSION.linux.bin.tar.gz \
+ && rm doxygen-$VERSION.linux.bin.tar.gz \
+ && mv doxygen-$VERSION /opt \
+ && ln -sf /opt/doxygen-$VERSION/bin/doxygen /usr/bin/doxygen

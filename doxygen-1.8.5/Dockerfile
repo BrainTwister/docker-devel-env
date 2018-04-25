@@ -13,7 +13,7 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-ARG VERSION=1.8.13
+ARG VERSION=1.8.5
 
 RUN wget https://sourceforge.net/projects/doxygen/files/rel-$VERSION/doxygen-$VERSION.linux.bin.tar.gz \
  && tar xf doxygen-$VERSION.linux.bin.tar.gz \
