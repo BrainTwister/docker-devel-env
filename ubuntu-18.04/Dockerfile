@@ -9,6 +9,7 @@ RUN apt-get update \
     dirmngr \
     git \
     git-svn \
+    gpg-agent \
     make \
     ninja-build \
     software-properties-common \
