@@ -33,10 +33,19 @@ def build_images(image_type, image_list, args, docker_push):
 
             p = subprocess.Popen(cmd, shell=True, cwd=module, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
+            build_log = ''
+            while p.poll() is None:
+                line = p.stdout.readline().decode('utf-8')
+                if args.verbose > 1:
+                    print(line, end='')
+                else:
+                    build_log += line
+            line = p.stdout.readline().decode('utf-8')
             if args.verbose > 1:
-                print(p.communicate()[0].decode('ascii', errors='ignore'))
+                print(line, end='')
+            else:
+                build_log += line
 
-            p.wait()
             if p.returncode == 0:
                 if args.verbose == 1:
                     print(' passed')
@@ -60,7 +69,7 @@ def build_images(image_type, image_list, args, docker_push):
             else:
                 print('Build failed')
                 if args.verbose <= 1:
-                    print(p.communicate()[0].decode('ascii', errors='ignore'))
+                    print(build_log)
                 failed = True
     return failed
 
