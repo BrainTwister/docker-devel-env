@@ -1,3 +1,5 @@
+[![Build Status](https://jenkins.braintwister.eu/buildStatus/icon?job=BrainTwister/docker-devel-env/master)](https://jenkins.braintwister.eu/job/BrainTwister/job/docker-devel-env/job/master/)
+
 # Docker Development Environment
 
 Docker enables a great way for fast, small, reproducible, and portable software development environments.

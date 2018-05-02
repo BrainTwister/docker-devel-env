@@ -20,7 +20,7 @@ def build_images(image_type, image_list, args, docker_push):
             base   = '-'.join(image[:-1])
             module = image[-1:][0] 
 
-            cmd = 'docker build'
+            cmd = 'docker build --pull'
             if args.no_cache:
                 cmd += ' --no-cache'
             cmd += ' -t braintwister/' + image_name
