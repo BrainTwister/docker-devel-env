@@ -1,14 +1,8 @@
 #!/bin/bash
 
-# Add conan repositories of conan base module for eclipse user
-if [ -f /config/conan_add_repositories.sh ]
-then
-  /config/conan_add_repositories.sh
-fi
-
-# Add local user
 if [ "$EUID" == "0" ] && [ "$USER_ID" != "0" ]
 then 
+  # Add local user
   USER_ID=${USER_ID:-9001}
   GROUP_ID=${GROUP_ID:-${USER_ID}}
   USER_NAME=${USER_NAME:-user}
@@ -25,6 +19,12 @@ then
 
   export HOME=/home/$USER_NAME
   cd $HOME
+
+  # Add conan repositories of conan base module for eclipse user
+  if [ -f /config/conan_add_repositories.sh ]
+  then
+    /usr/local/bin/gosu $USER_NAME /config/conan_add_repositories.sh
+  fi
 
   # Add user to docker group
   grep -qF 'docker' /etc/group && usermod -aG docker $USER_NAME || true

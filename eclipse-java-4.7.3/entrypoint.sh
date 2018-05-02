@@ -23,7 +23,7 @@ then
   # Add conan repositories of conan base module for eclipse user
   if [ -f /config/conan_add_repositories.sh ]
   then
-    exec /usr/local/bin/gosu $USER_NAME /config/conan_add_repositories.sh
+    /usr/local/bin/gosu $USER_NAME /config/conan_add_repositories.sh
   fi
 
   # Add user to docker group
