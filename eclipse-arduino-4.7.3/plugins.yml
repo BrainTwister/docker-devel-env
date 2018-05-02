@@ -4,17 +4,15 @@ general_repos:
 
 install:
   arduino:
-   - units:
-      - org.eclipse.remote.serial.feature.group
-      - org.eclipse.remote.console.feature.group
-      - org.eclipse.remote.feature.group
-   
    - repos:
       - http://download.eclipse.org/tools/cdt/releases/9.4/
      units:
       - org.eclipse.cdt.arduino.feature.group
       - org.eclipse.launchbar.feature.group
       - org.eclipse.launchbar.remote.feature.group
+      - org.eclipse.remote.serial.feature.group
+      - org.eclipse.remote.console.feature.group
+      - org.eclipse.remote.feature.group
 
   cmake4eclipse:
    - repos:
