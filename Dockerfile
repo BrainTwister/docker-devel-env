@@ -12,4 +12,4 @@ RUN apt-get update \
 
 RUN pip install --upgrade pip \
  && hash -r pip \
- && pip install -I pyyaml==3.12 
+ && pip install -I pyyaml~=3.12 

@@ -17,7 +17,7 @@ RUN apt-get update \
 
 RUN pip3 install --upgrade pip \
  && hash -r pip3 \
- && pip3 install -I pyyaml==3.12 
+ && pip3 install -I pyyaml~=3.12 
 
 ENV DOWNLOAD_URL http://download.eclipse.org/technology/epp/downloads/release/oxygen/3/eclipse-cpp-oxygen-3-linux-gtk-x86_64.tar.gz
 ENV INSTALLATION_DIR /usr/local
