@@ -1,4 +1,4 @@
-FROM braintwister/ubuntu-16.04-docker-17.12
+FROM braintwister/ubuntu-16.04-docker-18.03
 
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
@@ -10,6 +10,6 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN pip install --upgrade pip \
- && hash -r pip \
- && pip install -I pyyaml~=3.12 
+RUN pip3 install --upgrade pip \
+ && hash -r pip3 \
+ && pip3 install -I pyyaml~=3.12 
