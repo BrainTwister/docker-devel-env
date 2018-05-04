@@ -20,7 +20,9 @@ def build_images(image_type, image_list, args, docker_push):
             base   = '-'.join(image[:-1])
             module = image[-1:][0] 
 
-            cmd = 'docker build --pull'
+            cmd = 'docker build'
+            if args.pull:
+                cmd += ' --pull'
             if args.no_cache:
                 cmd += ' --no-cache'
             cmd += ' -t braintwister/' + image_name
@@ -81,6 +83,7 @@ def main():
     parser.add_argument('-u', '--user', help='Username for docker repository')
     parser.add_argument('-p', '--password', help='Password for docker repository')
     parser.add_argument('--no-cache', action="store_true", help='Do not use cache when building the image')
+    parser.add_argument('--pull', action="store_true", help='Always attempt to pull a newer version of the image')
 
     args = parser.parse_args()
     image_list = yaml.load(open(args.images, 'r'));
