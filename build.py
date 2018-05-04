@@ -37,12 +37,12 @@ def build_images(image_type, image_list, args, docker_push):
 
             build_log = ''
             while p.poll() is None:
-                line = p.stdout.readline().decode('utf-8')
+                line = p.stdout.readline().decode('utf-8', 'backslashreplace')
                 if args.verbose > 1:
                     print(line, end='')
                 else:
                     build_log += line
-            line = p.stdout.readline().decode('utf-8')
+            line = p.stdout.readline().decode('utf-8', 'backslashreplace')
             if args.verbose > 1:
                 print(line, end='')
             else:
