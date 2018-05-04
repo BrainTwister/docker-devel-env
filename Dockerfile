@@ -10,4 +10,6 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install -I pyyaml==3.12 
+RUN pip install --upgrade pip \
+ && hash -r pip \
+ && pip install -I pyyaml==3.12 

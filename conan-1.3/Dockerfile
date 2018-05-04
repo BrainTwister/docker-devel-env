@@ -10,7 +10,9 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN pip install -I conan==1.3
+RUN pip install --upgrade pip \
+ && hash -r pip \
+ && pip install -I conan==1.3
 
 # Add conan repositories for root
 ADD conan_add_repositories.sh /config/
