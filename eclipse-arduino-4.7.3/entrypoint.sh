@@ -26,8 +26,12 @@ then
     /usr/local/bin/gosu $USER_NAME /config/conan_add_repositories.sh
   fi
 
-  # Add user to docker group
-  grep -qF 'docker' /etc/group && usermod -aG docker $USER_NAME || true
+  # Add user to docker group and start service
+  if grep -qF 'docker' /etc/group
+  then 
+    usermod -aG docker $USER_NAME
+    service docker start
+  fi
 
   exec /usr/local/bin/gosu $USER_NAME "$@"
 else
