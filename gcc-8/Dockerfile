@@ -14,6 +14,7 @@ RUN apt-add-repository -y ppa:jonathonf/gcc-8.1 \
  && apt-get update \
  && apt-get install -y --no-install-recommends \
     gcc-8 \
+    g++-8 \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
  && ln -sf /usr/bin/g++-8 /usr/bin/g++ \
