@@ -11,6 +11,7 @@ RUN apt-get update \
     make \
     python3-setuptools \
     openjdk-8-jdk \
+    python3-dev \
     python3-pip \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
