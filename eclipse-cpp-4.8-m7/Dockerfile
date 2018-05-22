@@ -20,7 +20,7 @@ RUN pip3 install --upgrade pip \
  && hash -r pip3 \
  && pip3 install -I pyyaml~=3.12 
 
-ENV DOWNLOAD_URL http://download.eclipse.org/technology/epp/downloads/release/photon/M6/eclipse-cpp-photon-M6-linux-gtk-x86_64.tar.gz
+ENV DOWNLOAD_URL http://download.eclipse.org/technology/epp/downloads/release/photon/M7/eclipse-cpp-photon-M7-linux-gtk-x86_64.tar.gz
 ENV INSTALLATION_DIR /usr/local
 
 RUN curl -L "$DOWNLOAD_URL" | tar xz -C $INSTALLATION_DIR
