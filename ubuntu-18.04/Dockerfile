@@ -12,6 +12,7 @@ RUN apt-get update \
     gpg-agent \
     make \
     ninja-build \
+    python3 \
     python3-dev \
     python3-pip \
     python3-setuptools \
@@ -20,6 +21,10 @@ RUN apt-get update \
     wget \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
+
+RUN pip3 install --upgrade pip \
+ && hash -r pip3 \
+ && pip3 install -I pyyaml~=3.12 
 
 # Install gosu
 RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4
