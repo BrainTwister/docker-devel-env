@@ -10,6 +10,9 @@ RUN apt-get update \
     git-svn \
     make \
     ninja-build \
+    python3-dev \
+    python3-pip \
+    python3-setuptools \
     software-properties-common \
     vim \
     wget \

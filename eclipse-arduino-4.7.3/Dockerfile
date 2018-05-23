@@ -5,13 +5,9 @@ LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
-    curl \
     firefox \
     libgtk2.0-0 \
-    make \
-    python3-setuptools \
     openjdk-8-jdk \
-    python3-pip \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
