@@ -9,6 +9,8 @@ def build_images(image_type, image_list, args, docker_push):
 
     failed = False
     if image_type in image_list:
+        if not image_list[image_type]:
+            return True
         for image in image_list[image_type]:
 
             image_name = '-'.join(image)
