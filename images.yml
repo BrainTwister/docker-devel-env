@@ -71,5 +71,5 @@ images:
  - ['ubuntu-18.04', 'cmake-3.11', 'gcc-8', 'conan-1.3']
  - ['ubuntu-18.04', 'cmake-3.11', 'gcc-8', 'conan-1.3', 'docker-nightly']
  - ['ubuntu-18.04', 'cmake-3.11', 'gcc-8', 'conan-1.3', 'docker-nightly', 'eclipse-cpp-4.7.3']
- - ['ubuntu-18.04', 'cmake-3.11', 'gcc-8', 'conan-1.3', 'docker-nightly', 'eclipse-cpp-4.8-m7']
+ - ['ubuntu-18.04', 'cmake-3.11', 'gcc-8', 'conan-1.3', 'docker-nightly', 'eclipse-cpp-4.8-rc1']
  - ['ubuntu-18.04', 'gitg-3.26']
