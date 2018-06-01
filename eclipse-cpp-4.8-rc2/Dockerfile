@@ -11,7 +11,7 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-ENV DOWNLOAD_URL http://download.eclipse.org/technology/epp/downloads/release/photon/M6/eclipse-cpp-photon-M6-linux-gtk-x86_64.tar.gz
+ENV DOWNLOAD_URL http://download.eclipse.org/technology/epp/downloads/release/photon/RC2/eclipse-cpp-photon-RC2-linux-gtk-x86_64.tar.gz
 ENV INSTALLATION_DIR /usr/local
 
 RUN curl -L "$DOWNLOAD_URL" | tar xz -C $INSTALLATION_DIR
