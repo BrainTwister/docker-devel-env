@@ -1,23 +1,26 @@
-[![Build Status](https://jenkins.braintwister.eu/buildStatus/icon?job=BrainTwister/docker-devel-env/master)](https://jenkins.braintwister.eu/job/BrainTwister/job/docker-devel-env/job/master/)
+[![Build Status](https://jenkins.braintwister.eu/buildStatus/icon?job=BrainTwister/docker-devel-env/master)]
+                (https://jenkins.braintwister.eu/job/BrainTwister/job/docker-devel-env/job/master/)
 
 # Docker Development Environment
 
-Docker enables a great way for fast, small, reproducible, and portable software development environments.
+Fast, reproducible, and portable software development environments
 
-The advantages are:
+Copyright (C) 2018 Bernd Doser, <bernd.doser@braintwister.eu>
 
- * Fast build and execution of containers, especially compared to virtual machines
- * Very economical consumption of resources
- * Portability: Same environment on different machines and different platforms (also different operating systems)
- * Identical environment for IDE and continuous integration
- * Easy provisioning 
+All rights reserved.
+
+BrainTwister docker-devel-env is free software made available under the [MIT License]
+(http://opensource.org/licenses/MIT). For details see [the license file](LICENSE).
+
+
+## Advantages
+
+ * Fast build and execution compared to virtual machines
+ * Portability: Same environment on different machines, platforms, and operating systems
  * Reproducible behaviors
-
-
-## Requirements
-
- * docker
- * docker-compose (recommended)
+ * Economical consumption of resources
+ * Identical environment for development IDE and continuous integration
+ * Easy provisioning of images 
 
 
 ## Docker images
@@ -36,11 +39,15 @@ cd cmake-3.10
 docker build -t braintwister/ubuntu-16.04-cmake-3.11 --build-arg BASE_IMAGE=braintwister/ubuntu-16.04 .
 ```
 
-Please find a list of available images at [images.yml](images.yml).
+Please find a list of available images at [images.yml](images.yml). The images
+in the list will be build automatically with
+[Jenkins](https://jenkins.braintwister.eu/job/BrainTwister/job/docker-devel-env/)
+and pushed to [DockerHub](https://hub.docker.com/u/braintwister/dashboard/).
+
 The docker images can be pulled with
 
 ```bash
-docker pull braintwister/module1-module2-module3
+docker pull braintwister/<image-name>
 ```
 
 
