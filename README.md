@@ -8,8 +8,8 @@ Copyright (C) 2018 Bernd Doser, <bernd.doser@braintwister.eu>
 
 All rights reserved.
 
-BrainTwister docker-devel-env is free software made available under the [MIT License]
-(http://opensource.org/licenses/MIT). For details see [the license file](LICENSE).
+BrainTwister docker-devel-env is free software made available under the [MIT License](http://opensource.org/licenses/MIT).
+For details see [the license file](LICENSE).
 
 
 ## Advantages
@@ -92,11 +92,11 @@ gdb.
 
 ## Eclipse IDE Photon
 
-The latest release candidate of Eclipse Photon can be started for testing with
+The latest release candidate RC3 of Eclipse Photon can be started for testing with
 
 ```bash
 docker run -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY \
-  braintwister/ubuntu-18.04-cmake-3.11-gcc-8-conan-1.4-docker-nightly-eclipse-cpp-4.8-rc2
+  braintwister/ubuntu-18.04-cmake-3.11-gcc-8-conan-1.4-docker-nightly-eclipse-cpp-4.8-rc3
 ```
 
 
