@@ -13,3 +13,6 @@ RUN cd opt \
  && tar xf cmake-$VERSION-$ARCH.tar.gz \
  && rm cmake-$VERSION-$ARCH.tar.gz \
  && ln -sf /opt/cmake-$VERSION-$ARCH/bin/cmake /usr/bin/cmake
+ && ln -sf /opt/cmake-$VERSION-$ARCH/bin/ccmake /usr/bin/ccmake
+ && ln -sf /opt/cmake-$VERSION-$ARCH/bin/ctest /usr/bin/ctest
+ && ln -sf /opt/cmake-$VERSION-$ARCH/bin/cpack /usr/bin/cpack
