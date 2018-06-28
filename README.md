@@ -64,7 +64,7 @@ installed can be started by
 
 ```bash
 docker run -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY \
-  braintwister/ubuntu-16.04-cmake-3.11-gcc-7-conan-1.4-docker-18.03-eclipse-cpp-4.7.3
+  braintwister/ubuntu-16.04-cmake-3.11-gcc-7-conan-1.5-docker-18.03-eclipse-cpp-4.7.3
 ```
 
 or using docker-compose by
@@ -74,7 +74,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-16.04-cmake-3.11-gcc-7-conan-1.4-docker-18.03-eclipse-cpp-4.7.3
+    image: braintwister/ubuntu-16.04-cmake-3.11-gcc-7-conan-1.5-docker-18.03-eclipse-cpp-4.7.3
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro 
     environment:
@@ -92,11 +92,11 @@ gdb.
 
 ## Eclipse IDE Photon
 
-The latest release candidate RC3 of Eclipse Photon can be started for testing with
+Eclipse Photon can be started with together with the latest GCC compiler using
 
 ```bash
 docker run -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY \
-  braintwister/ubuntu-18.04-cmake-3.11-gcc-8-conan-1.4-docker-nightly-eclipse-cpp-4.8-rc3
+  braintwister/ubuntu-18.04-cmake-3.11-gcc-8-conan-1.5-docker-nightly-eclipse-cpp-4.8
 ```
 
 
@@ -118,7 +118,7 @@ version: "2.3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-16.04-cuda-9.2-cmake-3.11-gcc-7-conan-1.4-nsight
+    image: braintwister/ubuntu-16.04-cuda-9.2-cmake-3.11-gcc-7-conan-1.5-nsight
     runtime: nvidia
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
@@ -140,7 +140,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-16.04-cmake-3.11-gcc-7-conan-1.4-docker-18.03-eclipse-arduino-4.7.3
+    image: braintwister/ubuntu-16.04-cmake-3.11-gcc-7-conan-1.5-docker-18.03-eclipse-arduino-4.7.3
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
       - /dev/ttyACM0:/dev/ttyACM0
@@ -160,7 +160,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-16.04-cmake-3.11-gcc-7-conan-1.4-docker-18.03-eclipse-cpp-4.7.3
+    image: braintwister/ubuntu-16.04-cmake-3.11-gcc-7-conan-1.5-docker-18.03-eclipse-cpp-4.7.3
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro 
       - home:/home/user
@@ -192,7 +192,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-16.04-cmake-3.11-gcc-7-conan-1.4-docker-18.03-eclipse-cpp-4.7.3
+    image: braintwister/ubuntu-16.04-cmake-3.11-gcc-7-conan-1.5-docker-18.03-eclipse-cpp-4.7.3
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro 
       - home:/home/${USER_NAME}
@@ -231,7 +231,7 @@ pipeline {
 
   agent {
     docker {
-      image 'braintwister/ubuntu-16.04-cmake-3.11-clang-6-conan-1.4'
+      image 'braintwister/ubuntu-16.04-cmake-3.11-clang-6-conan-1.5'
     }
   }
 
