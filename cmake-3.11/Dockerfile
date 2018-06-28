@@ -15,5 +15,5 @@ RUN cd opt \
  && ln -sf /opt/cmake-$VERSION-$ARCH/bin/ccmake /usr/bin/ccmake \
  && ln -sf /opt/cmake-$VERSION-$ARCH/bin/cmake /usr/bin/cmake \
  && ln -sf /opt/cmake-$VERSION-$ARCH/bin/cmake-gui /usr/bin/cmake-gui \
- && ln -sf /opt/cmake-$VERSION-$ARCH/bin/cpack /usr/bin/cpack
- && ln -sf /opt/cmake-$VERSION-$ARCH/bin/ctest /usr/bin/ctest \
+ && ln -sf /opt/cmake-$VERSION-$ARCH/bin/cpack /usr/bin/cpack \
+ && ln -sf /opt/cmake-$VERSION-$ARCH/bin/ctest /usr/bin/ctest
