@@ -63,7 +63,7 @@ A ready-for-action eclipse IDE with
 installed can be started by
 
 ```bash
-docker run -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY \
+docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY \
   braintwister/ubuntu-16.04-cmake-3.11-gcc-7-conan-1.5-docker-18.03-eclipse-cpp-4.7.3
 ```
 
@@ -95,7 +95,7 @@ gdb.
 Eclipse Photon can be started with together with the latest GCC compiler using
 
 ```bash
-docker run -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY \
+docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY \
   braintwister/ubuntu-18.04-cmake-3.11-gcc-8-conan-1.5-docker-nightly-eclipse-cpp-4.8
 ```
 
