@@ -92,7 +92,7 @@ gdb.
 
 ## Eclipse IDE Photon
 
-Eclipse Photon can be started with together with the latest GCC compiler using
+Eclipse Photon can be started with the latest GCC compiler by
 
 ```bash
 docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY \
