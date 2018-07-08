@@ -11,6 +11,8 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
+RUN pip3 install -I jinja2 
+
 ENV DOWNLOAD_URL http://download.eclipse.org/technology/epp/downloads/release/photon/R/eclipse-cpp-photon-R-linux-gtk-x86_64.tar.gz
 ENV INSTALLATION_DIR /usr/local
 
