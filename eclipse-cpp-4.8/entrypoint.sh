@@ -20,6 +20,9 @@ then
   export HOME=/home/$USER_NAME
   cd $HOME
 
+  # Set user as owner of eclipse installation directory to allow updates of plugins
+  chown -R $USER_NAME:$GROUP_NAME $INSTALLATION_DIR/eclipse
+
   # Add conan repositories of conan base module for eclipse user
   if [ -f /config/conan_add_repositories.sh ]
   then
