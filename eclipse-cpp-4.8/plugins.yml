@@ -1,8 +1,14 @@
 ---
 general_repos:
- - http://download.eclipse.org/releases/oxygen/
+ - http://download.eclipse.org/releases/photon/
 
 install:
+  BashEditor:
+   - repos:
+      - https://dl.bintray.com/de-jcup/basheditor/
+     units:
+      - de.jcup.basheditor.feature.group
+
   cmake4eclipse:
    - repos:
       - https://raw.githubusercontent.com/15knots/cmake4eclipse/master/releng/comp-update/
