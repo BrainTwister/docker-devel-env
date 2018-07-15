@@ -27,6 +27,12 @@ install:
      units:
       - de.jcup.jenkinseditor.feature.feature.group
 
+  JSONEditor:
+   - repos:
+      - https://sourceforge.net/projects/eclipsejsonedit/files/update/
+     units:
+      - jsonedit-feature.feature.group
+
   PyDev:
    - repos:
       - http://www.pydev.org/updates/ 
