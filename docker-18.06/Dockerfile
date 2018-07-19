@@ -18,6 +18,6 @@ RUN add-apt-repository \
 
 RUN apt-get update \
  && apt-get install -y \
-    docker-ce=18.03.* \
+    docker-ce=18.06.* \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
