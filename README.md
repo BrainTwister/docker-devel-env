@@ -75,7 +75,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-16.04-cmake-3.12-gcc-7-conan-1.6-docker-18.03-eclipse-cpp-4.7.3
+    image: braintwister/ubuntu-16.04-cmake-3.12-gcc-7-conan-1.6-docker-18.06-eclipse-cpp-4.7.3
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
     environment:
