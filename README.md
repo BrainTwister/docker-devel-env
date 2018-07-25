@@ -38,8 +38,8 @@ cd cmake-3.12
 docker build -t braintwister/ubuntu-16.04-cmake-3.12 --build-arg BASE_IMAGE=braintwister/ubuntu-16.04 .
 ```
 
-Please find a list of available images at [images.yml](images.yml). The images
-in the list will be build automatically with
+Please find a list of available images at [images.yml](images.yml).
+The images in the list will be build automatically with
 [Jenkins](https://jenkins.braintwister.eu/job/BrainTwister/job/docker-devel-env/)
 and pushed to [DockerHub](https://hub.docker.com/u/braintwister/dashboard/).
 
@@ -49,6 +49,7 @@ The docker images can be pulled with
 docker pull braintwister/<image-name>
 ```
 
+![Docker scheme](https://braintwister.eu/images/docker-devel-env.jpg)
 
 ## Eclipse IDE
 ### Eclipse IDE for C++ development
@@ -76,7 +77,7 @@ services:
   eclipse:
     image: braintwister/ubuntu-16.04-cmake-3.12-gcc-7-conan-1.6-docker-18.03-eclipse-cpp-4.7.3
     volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix:ro 
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
     environment:
       - DISPLAY
     privileged: true
@@ -148,6 +149,7 @@ services:
       - DISPLAY
     privileged: true
 ```
+
 
 ### Persistent storage
 
