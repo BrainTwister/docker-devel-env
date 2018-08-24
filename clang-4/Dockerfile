@@ -8,6 +8,7 @@ RUN wget -O - http://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
  && apt-get update \
  && apt-get install -y --no-install-recommends \
     clang-4.0 \
+    libomp-dev \
     lldb-4.0 \
     gdb \
     linux-tools-generic \
