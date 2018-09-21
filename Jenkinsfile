@@ -4,7 +4,7 @@ pipeline {
 
   agent {
     docker {
-      image 'braintwister/ubuntu-16.04-docker-18.03'
+      image 'braintwister/ubuntu-16.04-docker-18.06'
       args '-v /var/run/docker.sock:/var/run/docker.sock -e DOCKER_CONFIG=/tmp'
       alwaysPull true
     }
