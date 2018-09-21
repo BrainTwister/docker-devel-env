@@ -65,7 +65,7 @@ installed can be started by
 
 ```bash
 docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY \
-  braintwister/ubuntu-16.04-cmake-3.12-gcc-7-conan-1.7-docker-18.06-eclipse-cpp-4.7.3
+  braintwister/ubuntu-16.04-cmake-3.12-gcc-7-conan-1.7-docker-18.06-eclipse-cpp-2018-09
 ```
 
 or using docker-compose by
@@ -75,7 +75,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-16.04-cmake-3.12-gcc-7-conan-1.7-docker-18.06-eclipse-cpp-4.7.3
+    image: braintwister/ubuntu-16.04-cmake-3.12-gcc-7-conan-1.7-docker-18.06-eclipse-cpp-2018-09
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
     environment:
@@ -91,21 +91,11 @@ before starting the container. The privileged mode is needed for debugging with
 gdb.
 
 
-## Eclipse IDE Photon
-
-Eclipse Photon can be started with the latest GCC compiler by
-
-```bash
-docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY \
-  braintwister/ubuntu-18.04-cmake-3.12-gcc-8-conan-1.7-docker-18.06-eclipse-cpp-4.8
-```
-
-
 ### Eclipse IDE for CUDA development
 
 First of all [nvidia-docker](https://github.com/NVIDIA/nvidia-docker) version 2
 must be installed and the runtime attribute must be set to `nvidia`, that the
-container get access to the host GPU card.  The nvidia runtime attribute is
+container get access to the host GPU card. The nvidia runtime attribute is
 currently only available at docker-compose version 2.3.
 
 For CUDA development the NVIDIA IDE
@@ -131,17 +121,16 @@ services:
 
 ### Eclipse IDE for embedded development
 
-To use the [Eclipse CDT Arduino
-plugin](https://marketplace.eclipse.org/content/eclipse-c-ide-arduino) simply
-choose the eclipse-arduino module and bind the serial port of your Arduino
-connection (here: /dev/ttyACM0):
+For embedded programming you have to bind the host serial port (here:
+/dev/ttyACM0) to get a connection to the embedded platform (Arduino, ESP32,
+...).
 
 ```yaml
 version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-16.04-cmake-3.12-gcc-7-conan-1.7-docker-18.06-eclipse-arduino-4.7.3
+    image: braintwister/ubuntu-16.04-cmake-3.12-gcc-7-conan-1.7-docker-18.06-eclipse-cpp-2018-09
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
       - /dev/ttyACM0:/dev/ttyACM0
@@ -162,7 +151,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-16.04-cmake-3.12-gcc-7-conan-1.7-docker-18.06-eclipse-cpp-4.7.3
+    image: braintwister/ubuntu-16.04-cmake-3.12-gcc-7-conan-1.7-docker-18.06-eclipse-cpp-2018-09
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro 
       - home:/home/user
@@ -194,7 +183,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-16.04-cmake-3.12-gcc-7-conan-1.7-docker-18.06-eclipse-cpp-4.7.3
+    image: braintwister/ubuntu-16.04-cmake-3.12-gcc-7-conan-1.7-docker-18.06-eclipse-cpp-2018-09
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro 
       - home:/home/${USER_NAME}

@@ -1,18 +1,13 @@
 ---
 general_repos:
- - http://download.eclipse.org/releases/oxygen/
+ - http://download.eclipse.org/releases/photon/
 
 install:
-  arduino:
+  BashEditor:
    - repos:
-      - http://download.eclipse.org/tools/cdt/releases/9.4/
+      - https://dl.bintray.com/de-jcup/basheditor/
      units:
-      - org.eclipse.cdt.arduino.feature.group
-      - org.eclipse.launchbar.feature.group
-      - org.eclipse.launchbar.remote.feature.group
-      - org.eclipse.remote.serial.feature.group
-      - org.eclipse.remote.console.feature.group
-      - org.eclipse.remote.feature.group
+      - de.jcup.basheditor.feature.group
 
   cmake4eclipse:
    - repos:
@@ -20,23 +15,23 @@ install:
      units:
       - de.marw.cdt.cmake.feature.group
 
-  cmake:
+  cmakeed:
    - repos:
       - https://raw.githubusercontent.com/15knots/cmakeed/master/cmakeed-update/
      units:
       - com.cthing.cmakeed.feature.feature.group
-   
-  docker:
-   - repos:
-      - http://download.eclipse.org/tools/cdt/releases/9.4/
-     units:
-      - org.eclipse.cdt.docker.launcher.feature.group
 
   JenkinsEditor:
    - repos:
       - https://dl.bintray.com/de-jcup/jenkinseditor/
      units:
       - de.jcup.jenkinseditor.feature.feature.group
+
+  JSONEditor:
+   - repos:
+      - https://sourceforge.net/projects/eclipsejsonedit/files/update/
+     units:
+      - jsonedit-feature.feature.group
 
   PyDev:
    - repos:
