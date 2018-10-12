@@ -1,6 +1,6 @@
 ---
 general_repos:
- - http://download.eclipse.org/releases/photon/
+ - http://download.eclipse.org/releases/2018-09/
 
 install:
   BashEditor:
