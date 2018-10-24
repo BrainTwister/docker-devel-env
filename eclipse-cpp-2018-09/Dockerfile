@@ -13,7 +13,9 @@ RUN apt-get update \
 
 RUN pip3 install -I jinja2 
 
-ENV DOWNLOAD_URL http://download.eclipse.org/technology/epp/downloads/release/2018-09/R/eclipse-cpp-2018-09-linux-gtk-x86_64.tar.gz
+#ENV DOWNLOAD_URL http://download.eclipse.org/technology/epp/downloads/release/2018-09/R/eclipse-cpp-2018-09-linux-gtk-x86_64.tar.gz
+ENV DOWNLOAD_URL http://ftp.fau.de/eclipse/technology/epp/downloads/release/2018-09/R/eclipse-cpp-2018-09-linux-gtk-x86_64.tar.gz
+ENV SHA512 4d93be6701169021315439e8f8ba25c4a33e584487443c10ad23e81748838ec64e4fa6540d6ec03a60d1dc313b2b6b57f8edfdabe5895b9d82d084725cda7d8c
 ENV INSTALLATION_DIR /usr/local
 
 RUN curl -L "$DOWNLOAD_URL" | tar xz -C $INSTALLATION_DIR
