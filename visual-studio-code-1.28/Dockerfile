@@ -9,7 +9,7 @@ RUN wget "$DOWNLOAD_URL" -O code.deb
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
-    libgtk2.0-0 \
+    libgtk-3-0 \
     libx11-xcb-dev \
     ./code.deb \
  && apt-get clean \
