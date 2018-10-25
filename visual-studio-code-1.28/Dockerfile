@@ -18,4 +18,4 @@ RUN apt-get update \
 ADD entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD "code"
+CMD ["code", "--wait"]
