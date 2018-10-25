@@ -5,14 +5,13 @@ LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
-    python-pip \
     python-setuptools \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN pip install --upgrade pip \
- && hash -r pip \
- && pip install -I conan~=1.8
+RUN pip3 install --upgrade pip \
+ && hash -r pip3 \
+ && pip3 install -I conan~=1.8
 
 # Add conan repositories for root
 ADD conan_add_repositories.sh /config/
