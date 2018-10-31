@@ -139,8 +139,17 @@ services:
     privileged: true
 ```
 
+## Visual Studio Code
 
-### Persistent storage
+The Visual Studio Code IDE can be started by using
+
+```bash
+docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY \
+  braintwister/ubuntu-18.04-cmake-3.12-clang-7-conan-1.8-docker-18.06-vscode-1.28
+```
+
+
+## Persistent storage
 
 The data in the container can be made persistent by using a [docker
 volume](https://docs.docker.com/storage/volumes/) `home` for the home directory
@@ -164,7 +173,7 @@ volumes:
 ```
 
 
-### Project-assigned development environment
+## Project-assigned development environment
 
 The docker development environment can be directly stored within the source
 code repository and is able to bind the working directory of the source code

@@ -9,7 +9,9 @@ RUN wget "$DOWNLOAD_URL" -O code.deb
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
+    libasound2 \
     libgtk-3-0 \
+    libxtst6 \
     libx11-xcb-dev \
     ./code.deb \
  && apt-get clean \
@@ -18,4 +20,4 @@ RUN apt-get update \
 ADD entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["code", "--wait"]
+CMD ["code"]

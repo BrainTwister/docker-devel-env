@@ -33,7 +33,15 @@ then
     service docker start
   fi
 
-  exec /usr/local/bin/gosu $USER_NAME "$@"
+  /usr/local/bin/gosu $USER_NAME "$@"
 else
   $@
 fi
+
+# Keep container running until detatched vscode processes are terminated
+for i in $(pidof code)
+do
+  while [ -e /proc/$i ]
+    do sleep 0.1
+  done
+done
