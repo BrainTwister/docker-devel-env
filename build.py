@@ -1,4 +1,12 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
+
+"""
+BrainTwister/docker-devel-env - Build list of docker images
+"""
+
+__author__ = "Bernd Doser"
+__email__ = "bernd.doser@braintwister.eu"
+__license__ = "MIT"
 
 import argparse
 import subprocess
