@@ -30,7 +30,7 @@ then
   if grep -qF 'docker' /etc/group
   then 
     usermod -aG docker $USER_NAME
-    service docker start
+    start-stop-daemon -SbCv -x /usr/bin/dockerd -- -H unix://
   fi
 
   exec /usr/local/bin/gosu $USER_NAME "$@"
