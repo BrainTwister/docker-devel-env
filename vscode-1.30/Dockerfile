@@ -15,6 +15,7 @@ RUN apt-get update \
     libx11-xcb-dev \
     ./code.deb \
  && apt-get clean \
+ && rm ./code.deb \
  && rm -rf /var/lib/apt/lists/*
 
 ADD entrypoint.sh /
