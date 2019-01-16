@@ -4,7 +4,7 @@ FROM $BASE_IMAGE
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
 ENV SHELL /bin/bash
-ENV DOWNLOAD_URL https://vscode-update.azurewebsites.net/1.30.1/linux-deb-x64/stable
+ENV DOWNLOAD_URL https://vscode-update.azurewebsites.net/1.30.2/linux-deb-x64/stable
 
 RUN wget "$DOWNLOAD_URL" -O code.deb
 
