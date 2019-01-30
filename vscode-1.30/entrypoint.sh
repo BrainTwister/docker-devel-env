@@ -23,7 +23,7 @@ then
   # Add conan repositories of conan base module for eclipse user
   if [ -f /config/conan_add_repositories.sh ]
   then
-    /usr/local/bin/gosu $USER_NAME /config/conan_add_repositories.sh
+    chroot --userspec=$USER_NAME / /config/conan_add_repositories.sh
   fi
 
   # Add user to docker group and start service
@@ -33,7 +33,7 @@ then
     start-stop-daemon -SbCv -x /usr/bin/dockerd -- -H unix://
   fi
 
-  /usr/local/bin/gosu $USER_NAME "$@"
+  chroot --userspec=$USER_NAME --skip-chdir / "$@"
 else
   $@
 fi

@@ -26,15 +26,6 @@ RUN pip3 install --upgrade pip \
  && hash -r pip3 \
  && pip3 install -I pyyaml~=3.12 
 
-# Install gosu
-ENV GOSU_VERSION 1.11
-RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4
- && curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture)" \
- && curl -o /usr/local/bin/gosu.asc -SL "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture).asc" \
- && gpg --verify /usr/local/bin/gosu.asc \
- && rm /usr/local/bin/gosu.asc \
- && chmod +x /usr/local/bin/gosu
-
 # Set aliases
 COPY aliases /tmp/
 RUN cat /tmp/aliases >> /etc/bash.bashrc && rm -f /tmp/aliases
