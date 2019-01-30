@@ -11,7 +11,7 @@ RUN apt-get update \
 
 RUN pip3 install --upgrade pip \
  && hash -r pip3 \
- && pip3 install -I conan~=1.11
+ && pip3 install -I conan~=1.12
 
 # Add conan repositories for root
 ADD conan_add_repositories.sh /config/
