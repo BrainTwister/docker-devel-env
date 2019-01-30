@@ -45,12 +45,14 @@ images:
  - ['ubuntu-16.04', 'cmake-3.13', 'clang-6', 'conan-1.11', 'docker-18.09', 'eclipse-cpp-2018-12']
  - ['ubuntu-16.04', 'cmake-3.13', 'clang-6', 'gtest-1.8.0']
  - ['ubuntu-16.04', 'cmake-3.13', 'clang-6', 'gtest-1.8.0', 'doxygen-1.8.13']
+
  - ['ubuntu-16.04', 'cuda-9.0']
  - ['ubuntu-16.04', 'cuda-9.0', 'cmake-3.13']
  - ['ubuntu-16.04', 'cuda-9.0', 'cmake-3.13', 'clang-6']
  - ['ubuntu-16.04', 'cuda-9.0', 'cmake-3.13', 'clang-6', 'conan-1.11']
  - ['ubuntu-16.04', 'cuda-9.0', 'cmake-3.13', 'clang-6', 'conan-1.11', 'docker-18.09']
  - ['ubuntu-16.04', 'cuda-9.0', 'cmake-3.13', 'clang-6', 'conan-1.11', 'docker-18.09', 'vscode-1.30']
+
  - ['ubuntu-16.04', 'cuda-9.2']
  - ['ubuntu-16.04', 'cuda-9.2', 'cmake-3.13']
  - ['ubuntu-16.04', 'cuda-9.2', 'cmake-3.13', 'gtest-1.8.0']
@@ -75,7 +77,7 @@ images:
  - ['ubuntu-16.04', 'cuda-9.2', 'cmake-3.13', 'clang-6', 'conan-1.11']
  - ['ubuntu-16.04', 'cuda-9.2', 'cmake-3.13', 'clang-6', 'conan-1.11', 'nsight']
  - ['ubuntu-16.04', 'cuda-9.2', 'cmake-3.13', 'clang-6', 'conan-1.11', 'doxygen-1.8.13']
- - ['ubuntu-16.04', 'docker-18.09']
+
  - ['ubuntu-18.04', 'cmake-3.13']
  - ['ubuntu-18.04', 'cmake-3.13', 'gcc-5']
  - ['ubuntu-18.04', 'cmake-3.13', 'gcc-5', 'conan-1.11']
@@ -94,6 +96,7 @@ images:
  - ['ubuntu-18.04', 'cmake-3.13', 'clang-7', 'conan-1.11', 'docker-18.09']
  - ['ubuntu-18.04', 'cmake-3.13', 'clang-7', 'conan-1.11', 'docker-18.09', 'eclipse-cpp-2018-12']
  - ['ubuntu-18.04', 'cmake-3.13', 'clang-7', 'conan-1.11', 'docker-18.09', 'vscode-1.30']
+
  - ['ubuntu-18.04', 'cuda-9.2']
  - ['ubuntu-18.04', 'cuda-9.2', 'cmake-3.13']
  - ['ubuntu-18.04', 'cuda-9.2', 'cmake-3.13', 'clang-7']
@@ -106,6 +109,7 @@ images:
  - ['ubuntu-18.04', 'cuda-9.2', 'cmake-3.13', 'gcc-7', 'conan-1.11', 'docker-18.09']
  - ['ubuntu-18.04', 'cuda-9.2', 'cmake-3.13', 'gcc-7', 'conan-1.11', 'docker-18.09', 'eclipse-cpp-2018-12']
  - ['ubuntu-18.04', 'cuda-9.2', 'cmake-3.13', 'gcc-7', 'conan-1.11', 'docker-18.09', 'vscode-1.30']
+
  - ['ubuntu-18.04', 'cuda-10.0']
  - ['ubuntu-18.04', 'cuda-10.0', 'cmake-3.13']
  - ['ubuntu-18.04', 'cuda-10.0', 'cmake-3.13', 'gcc-7']
@@ -126,5 +130,15 @@ images:
  - ['ubuntu-18.04', 'cuda-10.0', 'cmake-3.13', 'clang-7', 'conan-1.11', 'docker-18.09']
  - ['ubuntu-18.04', 'cuda-10.0', 'cmake-3.13', 'clang-7', 'conan-1.11', 'docker-18.09', 'eclipse-cpp-2018-12']
  - ['ubuntu-18.04', 'cuda-10.0', 'cmake-3.13', 'clang-7', 'conan-1.11', 'docker-18.09', 'vscode-1.30']
+
+ - ['ubuntu-16.04', 'docker-18.09']
  - ['ubuntu-18.04', 'docker-18.09']
+
  - ['ubuntu-18.04', 'gitg-3.26']
+
+ - ['ubuntu-18.04', 'tensorflow-1.12']
+ - ['ubuntu-18.04', 'tensorflow-1.12', 'jupyter-1.0']
+
+ - ['ubuntu-16.04', 'cuda-9.0']
+ - ['ubuntu-16.04', 'cuda-9.0', 'tensorflow-gpu-1.12']
+ - ['ubuntu-16.04', 'cuda-9.0', 'tensorflow-gpu-1.12', 'jupyter-1.0']
