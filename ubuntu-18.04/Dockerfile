@@ -6,10 +6,8 @@ RUN apt-get update \
  && apt-get install -y --no-install-recommends \
     ca-certificates \
     curl \
-    dirmngr \
     git \
     git-svn \
-    gpg-agent \
     make \
     ninja-build \
     python3 \
