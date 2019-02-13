@@ -49,7 +49,7 @@ The docker images can be pulled with
 docker pull braintwister/<image-name>
 ```
 
-![Docker scheme](https://braintwister.eu/images/docker-devel-env.jpg)
+![Docker scheme](https://braintwister.eu/images/docker-devel-env.jpg?)
 
 ## Eclipse IDE
 ### Eclipse IDE for C++ development
