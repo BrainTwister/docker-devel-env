@@ -14,7 +14,4 @@ ENV JUPYTER_CONFIG_DIR /jupyter-config
 
 EXPOSE 8888
 
-ADD entrypoint.sh /
-ENTRYPOINT ["/entrypoint.sh"]
-
 CMD ["bash", "-c", "source /etc/bash.bashrc && jupyter notebook --ip 0.0.0.0 --no-browser --allow-root"]

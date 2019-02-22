@@ -9,7 +9,7 @@ ARG VERSION="$MINOR_VERSION.$PATCH_VERSION"
 ARG ARCH="Linux-x86_64"
 
 RUN cd opt \
- && wget https://cmake.org/files/v$MINOR_VERSION/cmake-$VERSION-$ARCH.tar.gz \
+ && wget -q https://cmake.org/files/v$MINOR_VERSION/cmake-$VERSION-$ARCH.tar.gz \
  && tar xf cmake-$VERSION-$ARCH.tar.gz \
  && rm cmake-$VERSION-$ARCH.tar.gz \
  && ln -sf /opt/cmake-$VERSION-$ARCH/bin/ccmake /usr/bin/ccmake \

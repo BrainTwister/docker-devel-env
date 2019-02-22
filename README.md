@@ -4,7 +4,7 @@
 
 Fast, reproducible, and portable software development environments
 
-Copyright (C) 2018 Bernd Doser, <bernd.doser@braintwister.eu>
+Copyright (C) 2019 Bernd Doser, <bernd.doser@braintwister.eu>
 
 All rights reserved.
 
@@ -64,7 +64,7 @@ A ready-for-action eclipse IDE with
 installed can be started by
 
 ```bash
-docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY \
+docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY --privileged \
   braintwister/ubuntu-18.04-cmake-3.13-gcc-7-conan-1.12-docker-18.09-eclipse-cpp-2018-12
 ```
 
@@ -144,8 +144,8 @@ services:
 The Visual Studio Code IDE can be started by using
 
 ```bash
-docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY \
-  braintwister/ubuntu-18.04-cmake-3.13-clang-7-conan-1.12-docker-18.09-vscode-1.30
+docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY --privileged \
+  braintwister/ubuntu-18.04-cmake-3.13-clang-7-conan-1.12-docker-18.09-vscode-1.31
 ```
 
 

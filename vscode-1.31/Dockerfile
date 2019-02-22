@@ -6,7 +6,7 @@ LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 ENV SHELL /bin/bash
 ENV DOWNLOAD_URL https://vscode-update.azurewebsites.net/1.31.1/linux-deb-x64/stable
 
-RUN wget "$DOWNLOAD_URL" -O code.deb
+RUN wget -q "$DOWNLOAD_URL" -O code.deb
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
@@ -19,7 +19,6 @@ RUN apt-get update \
  && rm ./code.deb \
  && rm -rf /var/lib/apt/lists/*
 
-ADD entrypoint.sh /
-ENTRYPOINT ["/entrypoint.sh"]
+ADD keep_running.sh /root/postprocess.d/
 
 CMD ["code"]

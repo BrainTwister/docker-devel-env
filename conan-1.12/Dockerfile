@@ -13,6 +13,5 @@ RUN pip3 install --upgrade pip \
  && hash -r pip3 \
  && pip3 install -I conan~=1.12
 
-# Add conan repositories for root
-ADD conan_add_repositories.sh /config/
-RUN /config/conan_add_repositories.sh
+# Add entrypoint
+ADD conan_add_repositories.sh /root/entrypoint.d/

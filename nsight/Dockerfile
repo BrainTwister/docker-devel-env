@@ -15,7 +15,4 @@ RUN apt-get update \
 ADD install_plugins.py plugins.yml /config/
 RUN /config/install_plugins.py -p /config/plugins.yml
 
-ADD entrypoint.sh /
-ENTRYPOINT ["/entrypoint.sh"]
-
 CMD "/usr/local/cuda/bin/nsight"

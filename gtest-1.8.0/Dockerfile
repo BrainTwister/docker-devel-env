@@ -5,7 +5,7 @@ LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
 WORKDIR /tmp
 
-RUN wget https://github.com/google/googletest/archive/release-1.8.0.tar.gz \
+RUN wget -q https://github.com/google/googletest/archive/release-1.8.0.tar.gz \
  && tar xf release-1.8.0.tar.gz \
  && rm release-1.8.0.tar.gz \
  && cd googletest-release-1.8.0 \

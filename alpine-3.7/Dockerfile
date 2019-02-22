@@ -13,3 +13,8 @@ RUN apk add --no-cache \
 
 COPY aliases /tmp/
 RUN cat /tmp/aliases >> /etc/bash.bashrc && rm -f /tmp/aliases
+
+ADD entrypoint.sh /root/
+ENTRYPOINT ["/root/entrypoint.sh"]
+
+CMD ["/bin/bash"]

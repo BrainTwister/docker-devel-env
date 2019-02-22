@@ -24,7 +24,6 @@ RUN curl -L "$DOWNLOAD_URL" | tar xz -C $INSTALLATION_DIR
 ADD install_plugins.py plugins.yml /config/
 RUN /config/install_plugins.py -p /config/plugins.yml
 
-ADD entrypoint.sh /
-ENTRYPOINT ["/entrypoint.sh"]
+ADD entrypoint_eclipse.sh /root/entrypoint.d/
 
 CMD "$INSTALLATION_DIR/eclipse/eclipse"
