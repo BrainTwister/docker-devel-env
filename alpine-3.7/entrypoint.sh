@@ -10,7 +10,7 @@ then
 
   groupadd -g $GROUP_ID $GROUP_NAME
   useradd -s /bin/bash -g $GROUP_ID -u $USER_ID -o -c "container user" -m $USER_NAME
-  chown $USER_NAME:$GROUP_NAME /home/$USER_NAME
+  chown -R $USER_NAME:$GROUP_NAME /home/$USER_NAME
 
   export HOME=/home/$USER_NAME
   cd $HOME
