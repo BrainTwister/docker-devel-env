@@ -7,7 +7,7 @@ RUN apt-get update \
  && apt-get install -y --no-install-recommends \
     firefox \
     libgtk2.0-0 \
-    openjdk-8-jdk \
+    openjdk-11-jdk \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
