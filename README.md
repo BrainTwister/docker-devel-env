@@ -145,7 +145,7 @@ The Visual Studio Code IDE can be started by using
 
 ```bash
 docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY --privileged \
-  braintwister/ubuntu-18.04-cmake-3.13-clang-7-conan-1.12-docker-18.09-vscode-1.31
+  braintwister/ubuntu-18.04-cmake-3.13-clang-7-conan-1.12-docker-18.09-vscode-1.32
 ```
 
 
