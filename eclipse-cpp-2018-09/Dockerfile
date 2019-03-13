@@ -11,6 +11,20 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
+RUN if [ $(grep DISTRIB_RELEASE=16.04 /etc/lsb-release | wc -l) -eq 1 ]; then \
+        apt-get install -y --no-install-recommends \
+        openjdk-8-jdk \
+        && apt-get clean \
+        && rm -rf /var/lib/apt/lists/*
+    fi
+
+RUN if [ $(grep DISTRIB_RELEASE=18.04 /etc/lsb-release | wc -l) -eq 1 ]; then \
+        apt-get install -y --no-install-recommends \
+        openjdk-11-jdk \
+        && apt-get clean \
+        && rm -rf /var/lib/apt/lists/*
+    fi
+
 RUN pip3 install -I jinja2 
 
 #ENV DOWNLOAD_URL http://download.eclipse.org/technology/epp/downloads/release/2018-09/R/eclipse-cpp-2018-09-linux-gtk-x86_64.tar.gz
