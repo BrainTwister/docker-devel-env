@@ -21,10 +21,12 @@ pipeline {
       steps {
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub',
                           usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-          if (env.BRANCH_NAME == 'master') {
-              sh './build.py -vv -u $USERNAME -p $PASSWORD'
-          } else {
-              sh './build.py -vv'
+          script {
+            if (env.BRANCH_NAME == 'master') {
+                sh './build.py -vv -u $USERNAME -p $PASSWORD'
+            } else {
+                sh './build.py -vv'
+            }
           }
         }
       }
