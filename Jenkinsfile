@@ -4,7 +4,7 @@ pipeline {
 
   agent {
     docker {
-      image 'braintwister/ubuntu-16.04-docker-18.06'
+      image 'braintwister/ubuntu-16.04-docker-18.09'
       args '-v /var/run/docker.sock:/var/run/docker.sock -e DOCKER_CONFIG=/tmp'
       alwaysPull true
     }
@@ -21,7 +21,13 @@ pipeline {
       steps {
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub',
                           usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-          sh './build.py -vv -u $USERNAME -p $PASSWORD'
+          script {
+            if (env.BRANCH_NAME == 'master') {
+                sh './build.py -vv -u $USERNAME -p $PASSWORD'
+            } else {
+                sh './build.py -vv'
+            }
+          }
         }
       }
     }

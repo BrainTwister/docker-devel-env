@@ -25,7 +25,7 @@ RUN apt-get update \
 
 ARG VERSION=1.8.13
 
-RUN wget https://sourceforge.net/projects/doxygen/files/rel-$VERSION/doxygen-$VERSION.linux.bin.tar.gz \
+RUN wget -q https://sourceforge.net/projects/doxygen/files/rel-$VERSION/doxygen-$VERSION.linux.bin.tar.gz \
  && tar xf doxygen-$VERSION.linux.bin.tar.gz \
  && rm doxygen-$VERSION.linux.bin.tar.gz \
  && mv doxygen-$VERSION /opt \

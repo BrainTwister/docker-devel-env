@@ -21,3 +21,5 @@ RUN apt-get update \
     docker-ce=5:18.09.* \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
+
+ADD add_user_to_docker_group.sh /root/entrypoint.d/

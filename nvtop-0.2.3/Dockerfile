@@ -12,7 +12,7 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 
 RUN cd opt && \
-    wget https://github.com/Syllo/nvtop/archive/$VERSION.tar.gz && \
+    wget -q https://github.com/Syllo/nvtop/archive/$VERSION.tar.gz && \
     tar xf $VERSION.tar.gz && \
     rm $VERSION.tar.gz && \
     mkdir -p nvtop-$VERSION/build && \
