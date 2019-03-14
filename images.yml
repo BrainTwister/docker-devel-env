@@ -136,9 +136,9 @@ images:
 
  - ['ubuntu-18.04', 'gitg-3.26']
 
- - ['ubuntu-18.04', 'tensorflow-1.12']
- - ['ubuntu-18.04', 'tensorflow-1.12', 'jupyter-1.0']
+ - ['ubuntu-18.04', 'tensorflow-1.13']
+ - ['ubuntu-18.04', 'tensorflow-1.13', 'jupyter-1.0']
 
  - ['ubuntu-16.04', 'cuda-9.0']
- - ['ubuntu-16.04', 'cuda-9.0', 'tensorflow-gpu-1.12']
- - ['ubuntu-16.04', 'cuda-9.0', 'tensorflow-gpu-1.12', 'jupyter-1.0']
+ - ['ubuntu-16.04', 'cuda-9.0', 'tensorflow-gpu-1.13']
+ - ['ubuntu-16.04', 'cuda-9.0', 'tensorflow-gpu-1.13', 'jupyter-1.0']
