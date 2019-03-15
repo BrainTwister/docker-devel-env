@@ -31,11 +31,11 @@ a chain:
 
 The image `module1-module2-module3` is using the image `module1-module2` as
 base, which will be set using the build-time variable `BASE_IMAGE`. For
-example the image `ubuntu-18.04-cmake-3.13` will be build with
+example the image `ubuntu-18.04-cmake-3.14` will be build with
 
 ```bash
-cd cmake-3.13
-docker build -t braintwister/ubuntu-18.04-cmake-3.13 --build-arg BASE_IMAGE=braintwister/ubuntu-18.04 .
+cd cmake-3.14
+docker build -t braintwister/ubuntu-18.04-cmake-3.14 --build-arg BASE_IMAGE=braintwister/ubuntu-18.04 .
 ```
 
 Please find a list of available images at [images.yml](images.yml).
@@ -65,7 +65,7 @@ installed can be started by
 
 ```bash
 docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY --privileged \
-  braintwister/ubuntu-18.04-cmake-3.13-gcc-7-conan-1.12-docker-18.09-eclipse-cpp-2018-12
+  braintwister/ubuntu-18.04-cmake-3.14-gcc-7-conan-1.12-docker-18.09-eclipse-cpp-2018-12
 ```
 
 or using docker-compose by
@@ -75,7 +75,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-18.04-cmake-3.13-gcc-7-conan-1.12-docker-18.09-eclipse-cpp-2018-12
+    image: braintwister/ubuntu-18.04-cmake-3.14-gcc-7-conan-1.12-docker-18.09-eclipse-cpp-2018-12
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
     environment:
@@ -109,7 +109,7 @@ version: "2.3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-18.04-cuda-9.2-cmake-3.13-gcc-7-conan-1.12-nsight
+    image: braintwister/ubuntu-18.04-cuda-9.2-cmake-3.14-gcc-7-conan-1.12-nsight
     runtime: nvidia
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
@@ -130,7 +130,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-18.04-cmake-3.13-gcc-7-conan-1.12-docker-18.09-eclipse-cpp-2018-12
+    image: braintwister/ubuntu-18.04-cmake-3.14-gcc-7-conan-1.12-docker-18.09-eclipse-cpp-2018-12
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
       - /dev/ttyACM0:/dev/ttyACM0
@@ -145,7 +145,7 @@ The Visual Studio Code IDE can be started by using
 
 ```bash
 docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY --privileged \
-  braintwister/ubuntu-18.04-cmake-3.13-clang-7-conan-1.12-docker-18.09-vscode-1.32
+  braintwister/ubuntu-18.04-cmake-3.14-clang-7-conan-1.12-docker-18.09-vscode-1.32
 ```
 
 
@@ -160,7 +160,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-18.04-cmake-3.13-gcc-7-conan-1.12-docker-18.09-eclipse-cpp-2018-12
+    image: braintwister/ubuntu-18.04-cmake-3.14-gcc-7-conan-1.12-docker-18.09-eclipse-cpp-2018-12
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro 
       - home:/home/user
@@ -192,7 +192,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-18.04-cmake-3.13-gcc-7-conan-1.12-docker-18.09-eclipse-cpp-2018-12
+    image: braintwister/ubuntu-18.04-cmake-3.14-gcc-7-conan-1.12-docker-18.09-eclipse-cpp-2018-12
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro 
       - home:/home/${USER_NAME}
@@ -231,7 +231,7 @@ pipeline {
 
   agent {
     docker {
-      image 'braintwister/ubuntu-18.04-cmake-3.13-clang-7-conan-1.12'
+      image 'braintwister/ubuntu-18.04-cmake-3.14-clang-7-conan-1.12'
     }
   }
 
