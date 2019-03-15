@@ -16,8 +16,8 @@ then
   cd $HOME
 
   # Execute entrypoint modules
-  if [ -d "/root/entrypoint.d" ]; then
-    for f in /root/entrypoint.d/*.sh; do
+  if [ -d "/entrypoint.d" ]; then
+    for f in /entrypoint.d/*.sh; do
       . "$f" || break
     done
   fi
@@ -30,8 +30,8 @@ else
 fi
 
 # Execute postprocess modules
-if [ -d "/root/postprocess.d" ]; then
-  for f in /root/postprocess.d/*.sh; do
+if [ -d "/postprocess.d" ]; then
+  for f in /postprocess.d/*.sh; do
     . "$f" || break
   done
 fi

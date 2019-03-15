@@ -14,4 +14,4 @@ RUN pip3 install --upgrade pip \
  && pip3 install -I conan~=1.12
 
 # Add entrypoint
-ADD conan_add_repositories.sh /root/entrypoint.d/
+ADD conan_add_repositories.sh /entrypoint.d/

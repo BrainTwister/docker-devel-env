@@ -22,4 +22,4 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-ADD add_user_to_docker_group.sh /root/entrypoint.d/
+ADD add_user_to_docker_group.sh /entrypoint.d/

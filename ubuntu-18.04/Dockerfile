@@ -30,7 +30,7 @@ RUN pip3 install --upgrade pip \
 COPY aliases /tmp/
 RUN cat /tmp/aliases >> /etc/bash.bashrc && rm -f /tmp/aliases
 
-ADD entrypoint.sh /root/
-ENTRYPOINT ["/root/entrypoint.sh"]
+ADD entrypoint.sh /
+ENTRYPOINT ["/entrypoint.sh"]
 
 CMD ["/bin/bash"]

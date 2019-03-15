@@ -19,6 +19,6 @@ RUN apt-get update \
  && rm ./code.deb \
  && rm -rf /var/lib/apt/lists/*
 
-ADD keep_running.sh /root/postprocess.d/
+ADD keep_running.sh /postprocess.d/
 
 CMD ["code"]
