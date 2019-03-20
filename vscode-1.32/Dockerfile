@@ -10,6 +10,7 @@ RUN wget -q "$DOWNLOAD_URL" -O code.deb
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
+    chromium-browser \
     libasound2 \
     libgtk-3-0 \
     libxtst6 \
