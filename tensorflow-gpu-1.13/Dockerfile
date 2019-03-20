@@ -7,6 +7,7 @@ RUN apt-get update \
  && apt-get install -y \
     libcudnn7 \
     libcudnn7-dev \
+    python3-tk \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
