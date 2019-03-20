@@ -11,7 +11,7 @@ RUN apt-get update \
 
 RUN pip3 install --upgrade pip \
  && hash -r pip3 \
- && pip3 install -I conan~=1.12
+ && pip3 install -I conan~=1.13
 
 # Add entrypoint
 ADD conan_add_repositories.sh /entrypoint.d/
