@@ -109,7 +109,7 @@ version: "2.3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-18.04-cuda-9.2-cmake-3.14-gcc-7-conan-1.13-nsight
+    image: braintwister/ubuntu-18.04-cuda-10.1-cmake-3.14-gcc-7-conan-1.13-nsight
     runtime: nvidia
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
