@@ -12,7 +12,6 @@ pipeline {
 
   options {
     timeout(time: 24, unit: 'HOURS')
-    retry(3)
     disableConcurrentBuilds()
   }
 
