@@ -3,6 +3,7 @@ FROM ubuntu:16.04
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
 ARG TIMEZONE='Europe/Berlin'
+ARG DEBIAN_FRONTEND=noninteractive
 
 RUN echo $TIMEZONE > /etc/timezone && \
   apt-get update && apt-get install -y tzdata && \
