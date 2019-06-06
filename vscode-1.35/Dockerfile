@@ -3,8 +3,10 @@ FROM $BASE_IMAGE
 
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
+ARG VERSION=1.35.0
+
 ENV SHELL /bin/bash
-ENV DOWNLOAD_URL https://vscode-update.azurewebsites.net/1.32.1/linux-deb-x64/stable
+ENV DOWNLOAD_URL https://vscode-update.azurewebsites.net/$VERSION/linux-deb-x64/stable
 
 RUN wget -q "$DOWNLOAD_URL" -O code.deb
 
