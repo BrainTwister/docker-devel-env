@@ -2,6 +2,15 @@ FROM ubuntu:18.04
 
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
+ARG TIMEZONE='Europe/Berlin'
+
+RUN echo $TIMEZONE > /etc/timezone && \
+  apt-get update && apt-get install -y tzdata && \
+  rm /etc/localtime && \
+  ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime && \
+  dpkg-reconfigure -f noninteractive tzdata && \
+  apt-get clean
+
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
     ca-certificates \
