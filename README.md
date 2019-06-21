@@ -65,7 +65,7 @@ installed can be started by
 
 ```bash
 docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY --privileged \
-  braintwister/ubuntu-18.04-cmake-3.14-gcc-7-conan-1.13-docker-18.09-eclipse-cpp-2019-06
+  braintwister/ubuntu-18.04-cmake-3.14-gcc-7-conan-1.13-docker-18.09-eclipse-cpp-2019-03
 ```
 
 or using docker-compose by
@@ -75,7 +75,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-18.04-cmake-3.14-gcc-7-conan-1.13-docker-18.09-eclipse-cpp-2019-06
+    image: braintwister/ubuntu-18.04-cmake-3.14-gcc-7-conan-1.13-docker-18.09-eclipse-cpp-2019-03
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
     environment:
@@ -130,7 +130,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-18.04-cmake-3.14-gcc-7-conan-1.13-docker-18.09-eclipse-cpp-2019-06
+    image: braintwister/ubuntu-18.04-cmake-3.14-gcc-7-conan-1.13-docker-18.09-eclipse-cpp-2019-03
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
       - /dev/ttyACM0:/dev/ttyACM0
@@ -160,7 +160,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-18.04-cmake-3.14-gcc-7-conan-1.13-docker-18.09-eclipse-cpp-2019-06
+    image: braintwister/ubuntu-18.04-cmake-3.14-gcc-7-conan-1.13-docker-18.09-eclipse-cpp-2019-03
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro 
       - home:/home/user
@@ -192,7 +192,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-18.04-cmake-3.14-gcc-7-conan-1.13-docker-18.09-eclipse-cpp-2019-06
+    image: braintwister/ubuntu-18.04-cmake-3.14-gcc-7-conan-1.13-docker-18.09-eclipse-cpp-2019-03
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro 
       - home:/home/${USER_NAME}
