@@ -57,4 +57,7 @@ RUN cd tensorflow \
  && ./bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg \
  && pip install /tmp/tensorflow_pkg/tensorflow-$TENSORFLOW_VERSION-cp36-cp36m-linux_x86_64.whl
 
-RUN rm -r tensorflow bazel-0.25.2-installer-linux-x86_64.sh tmp/tensorflow_pkg
+RUN rm -r tensorflow \
+    tmp/tensorflow_pkg \
+    bazel-0.25.2-installer-linux-x86_64.sh \
+    /root/.cache/bazel
