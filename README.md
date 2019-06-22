@@ -65,7 +65,7 @@ installed can be started by
 
 ```bash
 docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY --privileged \
-  braintwister/ubuntu-18.04-cmake-3.14-gcc-7-conan-1.13-docker-18.09-eclipse-cpp-2019-06
+  braintwister/ubuntu-18.04-cmake-3.14-gcc-9-conan-1.16-docker-18.09-eclipse-cpp-2019-06
 ```
 
 or using docker-compose by
@@ -75,7 +75,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-18.04-cmake-3.14-gcc-7-conan-1.13-docker-18.09-eclipse-cpp-2019-06
+    image: braintwister/ubuntu-18.04-cmake-3.14-gcc-9-conan-1.16-docker-18.09-eclipse-cpp-2019-06
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
     environment:
@@ -109,7 +109,7 @@ version: "2.3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-18.04-cuda-10.1-cmake-3.14-gcc-7-conan-1.13-nsight
+    image: braintwister/ubuntu-18.04-cuda-10.1-cmake-3.14-gcc-9-conan-1.16-nsight
     runtime: nvidia
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
@@ -130,7 +130,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-18.04-cmake-3.14-gcc-7-conan-1.13-docker-18.09-eclipse-cpp-2019-06
+    image: braintwister/ubuntu-18.04-cmake-3.14-gcc-9-conan-1.16-docker-18.09-eclipse-cpp-2019-06
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
       - /dev/ttyACM0:/dev/ttyACM0
@@ -145,7 +145,7 @@ The Visual Studio Code IDE can be started by using
 
 ```bash
 docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY --privileged \
-  braintwister/ubuntu-18.04-cmake-3.14-clang-7-conan-1.13-docker-18.09-vscode-1.32
+  braintwister/ubuntu-18.04-cmake-3.14-clang-7-conan-1.16-docker-18.09-vscode-1.32
 ```
 
 
@@ -160,7 +160,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-18.04-cmake-3.14-gcc-7-conan-1.13-docker-18.09-eclipse-cpp-2019-06
+    image: braintwister/ubuntu-18.04-cmake-3.14-gcc-9-conan-1.16-docker-18.09-eclipse-cpp-2019-06
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro 
       - home:/home/user
@@ -192,7 +192,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-18.04-cmake-3.14-gcc-7-conan-1.13-docker-18.09-eclipse-cpp-2019-06
+    image: braintwister/ubuntu-18.04-cmake-3.14-gcc-9-conan-1.16-docker-18.09-eclipse-cpp-2019-06
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro 
       - home:/home/${USER_NAME}
@@ -231,7 +231,7 @@ pipeline {
 
   agent {
     docker {
-      image 'braintwister/ubuntu-18.04-cmake-3.14-clang-7-conan-1.13'
+      image 'braintwister/ubuntu-18.04-cmake-3.14-clang-7-conan-1.16'
     }
   }
 
