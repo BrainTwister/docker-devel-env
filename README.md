@@ -259,3 +259,22 @@ pipeline {
   }
 }
 ```
+
+## TensorFlow
+
+### TensorFlow with Visual Studio Code
+
+'''bash
+docker run -d --runtime=nvidia -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY -p 6006:6006 braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-1.14-vscode-1.35
+'''
+
+The port 6006 is used for the TensorBoard.
+
+### TensorFlow with Jupyter
+
+Start docker container with open port 8888 and open the listed url address:
+
+'''bash
+docker run --runtime=nvidia -p 8888:8888 braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-1.14-jupyter-1.0
+'''
+
