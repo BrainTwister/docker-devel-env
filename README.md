@@ -262,19 +262,43 @@ pipeline {
 
 ## TensorFlow
 
+For machine learning development we provide with an installation of the
+open-source framework [TensorFlow](https://github.com/tensorflow/tensorflow)
+using the latest cuda development drivers.
+
+Although the usage of GPUs is highly recommended
+`braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-1.14`, a CPU version is
+also provided `braintwister/ubuntu-18.04-tensorflow-1.14`.
+
+Start the plain container with
+
+```bash
+docker run -d --runtime=nvidia -p 6006:6006 \
+  braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-1.14
+```
+
+The port 6006 is used for the [TensorBoard](https://www.tensorflow.org/guide/summaries_and_tensorboard).
+
+
 ### TensorFlow with Visual Studio Code
 
-'''bash
-docker run -d --runtime=nvidia -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY -p 6006:6006 braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-1.14-vscode-1.35
-'''
+To allow the container to use the host display, the command `xhost +local:`
+must be executed on the host before starting the container.
 
-The port 6006 is used for the TensorBoard.
+```bash
+docker run -d --runtime=nvidia -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY \
+  -p 6006:6006 braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-1.14-vscode-1.35
+```
+
 
 ### TensorFlow with Jupyter
 
-Start docker container with open port 8888 and open the listed url address:
+Start the container with
 
-'''bash
-docker run --runtime=nvidia -p 8888:8888 braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-1.14-jupyter-1.0
-'''
+```bash
+docker run --runtime=nvidia -p 6006:6006 -p 8888:8888 \
+  braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-1.14-jupyter-1.0
+```
+
+and open localhost:8888 on your host browser.
 
