@@ -268,16 +268,17 @@ using the latest cuda development drivers.
 
 Although the usage of GPUs is highly recommended
 `braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-1.14`, a CPU version is
-also provided `braintwister/ubuntu-18.04-tensorflow-1.14`.
+also available `braintwister/ubuntu-18.04-tensorflow-1.14`.
 
-Start the plain container with
+Start a plain container with
 
 ```bash
-docker run -d --runtime=nvidia -p 6006:6006 \
-  braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-1.14
+docker run -it --runtime=nvidia braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-1.14
 ```
 
-The port 6006 is used for the [TensorBoard](https://www.tensorflow.org/guide/summaries_and_tensorboard).
+[TensorBoard](https://www.tensorflow.org/guide/summaries_and_tensorboard)
+is available at `localhost:6006`, if `-p 6006:6006` was added to the `docker
+run` command and tensorboard was launched within the container.
 
 
 ### TensorFlow with Visual Studio Code
@@ -287,7 +288,7 @@ must be executed on the host before starting the container.
 
 ```bash
 docker run -d --runtime=nvidia -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY \
-  -p 6006:6006 braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-1.14-vscode-1.35
+  braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-1.14-vscode-1.35
 ```
 
 
@@ -296,7 +297,7 @@ docker run -d --runtime=nvidia -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY \
 Start the container with
 
 ```bash
-docker run --runtime=nvidia -p 6006:6006 -p 8888:8888 \
+docker run --runtime=nvidia -p 8888:8888 \
   braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-1.14-jupyter-1.0
 ```
 
