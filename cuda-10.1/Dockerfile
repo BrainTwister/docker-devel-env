@@ -53,6 +53,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         cuda-nvml-dev-$CUDA_PKG_VERSION \
         cuda-minimal-build-$CUDA_PKG_VERSION \
         cuda-command-line-tools-$CUDA_PKG_VERSION \
+        cuda-visual-tools-$CUDA_PKG_VERSION \
         libcudnn7 \
         libcudnn7-dev \
         libnccl-dev=$NCCL_VERSION-1+cuda10.1 \
