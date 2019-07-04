@@ -288,7 +288,7 @@ must be executed on the host before starting the container.
 
 ```bash
 docker run -d --runtime=nvidia -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY \
-  braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-1.14-vscode-1.35
+  braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-1.14-vscode-1.36
 ```
 
 
