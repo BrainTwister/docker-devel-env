@@ -4,7 +4,7 @@ FROM $BASE_IMAGE
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
 ARG BAZEL_VERSION=0.21.0
-ARG TENSORFLOW_VERSION=1.13.1
+ARG TENSORFLOW_VERSION=1.13.2
 
 RUN ln -snf /usr/bin/python3 /usr/bin/python
 
