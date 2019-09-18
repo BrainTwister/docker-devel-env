@@ -76,6 +76,7 @@ images:
  - ['ubuntu-18.04', 'cuda-10.1', 'cmake-3.15', 'gcc-6', 'conan-1.18']
  - ['ubuntu-18.04', 'cuda-10.1', 'cmake-3.15', 'gcc-7']
  - ['ubuntu-18.04', 'cuda-10.1', 'cmake-3.15', 'gcc-7', 'conan-1.18']
+ - ['ubuntu-18.04', 'cuda-10.1', 'cmake-3.15', 'gcc-7', 'conan-1.18', 'doxygen-1.8.13']
  - ['ubuntu-18.04', 'cuda-10.1', 'cmake-3.15', 'gcc-8']
  - ['ubuntu-18.04', 'cuda-10.1', 'cmake-3.15', 'gcc-8', 'conan-1.18']
  - ['ubuntu-18.04', 'cuda-10.1', 'cmake-3.15', 'gcc-8', 'conan-1.18', 'docker-18.09']
