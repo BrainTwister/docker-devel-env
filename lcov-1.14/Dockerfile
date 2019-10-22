@@ -3,7 +3,7 @@ FROM $BASE_IMAGE
 
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
-ARG VERSION="1.13"
+ARG VERSION="1.14"
 
 RUN wget -q https://github.com/linux-test-project/lcov/archive/v$VERSION.tar.gz && \
     tar xf v$VERSION.tar.gz && \
