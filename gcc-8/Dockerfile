@@ -17,3 +17,5 @@ RUN apt-add-repository -y ppa:ubuntu-toolchain-r/test \
 
 ENV CC gcc
 ENV CXX g++
+
+RUN pip3 install -I gcovr
