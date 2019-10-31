@@ -6,7 +6,7 @@ LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 RUN apt-get update \
  && git clone https://github.com/adrianzap/softwipe.git \
  && cd softwipe \
- && git checkout 6be89c294b9d24fd336f66cfb83b41a8d66b9978 \
+ && git checkout f0ee3dd9b05bd2de4b9e89d07cae1149e566cbfa \
  && yes Y | ./softwipe.py \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
