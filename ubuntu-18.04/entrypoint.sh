@@ -15,6 +15,9 @@ then
   export HOME=/home/$USER_NAME
   cd $HOME
 
+  # Set python local user path
+  export PATH=$PATH:/home/$USER_NAME/.local/bin
+
   # Execute entrypoint modules
   if [ -d "/entrypoint.d" ]; then
     for f in /entrypoint.d/*.sh; do
