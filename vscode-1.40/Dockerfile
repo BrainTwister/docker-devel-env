@@ -3,7 +3,7 @@ FROM $BASE_IMAGE
 
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
-ARG VERSION=1.40.1
+ARG VERSION=1.40.2
 
 ENV SHELL /bin/bash
 ENV DOWNLOAD_URL https://vscode-update.azurewebsites.net/$VERSION/linux-deb-x64/stable
@@ -12,7 +12,7 @@ RUN wget -q "$DOWNLOAD_URL" -O code.deb
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
-    chromium-browser \
+    firefox \
     libasound2 \
     libgtk-3-0 \
     libxtst6 \
