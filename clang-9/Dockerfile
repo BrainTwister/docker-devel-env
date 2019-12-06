@@ -8,29 +8,33 @@ RUN wget -q -O - http://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
  && echo "deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic-9 main" >> /etc/apt/sources.list \
  && apt-get update \
  && apt-get install -y --no-install-recommends \
-    clang-format \
     clang-tidy \
-    clang-tools \
-    clang \
-#   clangd \
-    libc++-dev \
-    libc++1 \
-    libc++abi-dev \
-    libc++abi1 \
-    libclang-dev \
-    libclang1 \
-#   liblldb-dev \
-#   libllvm-ocaml-dev \
-    libomp-dev \
-    libomp5 \
-    lld \
-    lldb \
-    llvm-dev \
-    llvm-runtime \
-    llvm \
-#   python-clang \
+    clang-9 \
+    clang-9-doc \
+    clang-format-9 \
+    #clang-tools-9 \
+    clangd-9 \
+    libc++-9-dev \
+    libc++abi-9-dev \
+    libclang-9-dev \
+    libclang-common-9-dev \
+    libclang1-9 \
+    libfuzzer-9-dev \
+    libllvm-9-ocaml-dev \
+    libllvm9 \
+    libomp-9-dev \
+    lld-9 \
+    lldb-9 \
+    llvm-9 \
+    llvm-9-dev \
+    llvm-9-doc \
+    llvm-9-examples \
+    llvm-9-runtime \
+    python-clang-9 \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
+ && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-9 100 \
+ && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-9 100
 
 ENV CC clang
 ENV CXX clang++
