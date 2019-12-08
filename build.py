@@ -9,80 +9,111 @@ __email__ = "bernd.doser@braintwister.eu"
 __license__ = "MIT"
 
 import argparse
+import itertools
 import subprocess
 import sys
 import yaml
 
-def build_images(image_type, image_list, args, docker_push):
+IMAGE_VERSION = '0.1'
+
+def make_image_list(yaml_image_list):
+    ''' Generate all combinations of modules '''
+
+    # Change single modules into list
+    for e in yaml_image_list:
+        for i, m in enumerate(e):
+            if not isinstance(m, list): e[i] = [m]
+
+    # Create base images
+    for e in yaml_image_list:
+        if len(e) > 1: yaml_image_list.append(e[:-1])
+
+    print("1:")
+    for e in yaml_image_list:
+        print(e)
+
+    # Sort and remove duplicates
+    yaml_image_list.sort()
+    yaml_image_list = list(yaml_image_list for yaml_image_list,_ in itertools.groupby(yaml_image_list))
+
+    print("2:")
+    for e in yaml_image_list:
+        print(e)
+
+    image_list = list()
+    for e in yaml_image_list:
+        image_list.extend(list(itertools.product(*e)))
+
+    return image_list 
+
+
+def build_images(image_list, args, docker_push):
 
     failed = False
-    if image_type in image_list:
-        if not image_list[image_type]:
-            return True
-        for image in image_list[image_type]:
+    for image in image_list:
 
-            image_name = '-'.join(image)
-            if args.verbose == 1:
-                print(image_name.ljust(90), end='', flush=True)
-            elif args.verbose > 1:
-                print('Build ' + image_name)
+        image_name = '-'.join(image) + ':' + IMAGE_VERSION
+        if args.verbose == 1:
+            print(image_name.ljust(90), end='', flush=True)
+        elif args.verbose > 1:
+            print('Build ' + image_name)
 
-            base   = '-'.join(image[:-1])
-            module = image[-1:][0] 
+        base   = '-'.join(image[:-1])
+        module = image[-1:][0] 
 
-            cmd = 'docker build'
-            if args.pull:
-                cmd += ' --pull'
-            if args.no_cache:
-                cmd += ' --no-cache'
-            cmd += ' -t braintwister/' + image_name
-            if image_type == 'images':
-                cmd += ' --build-arg BASE_IMAGE=braintwister/' + base
-            cmd += ' .'
+        cmd = 'docker build'
+        if args.pull:
+            cmd += ' --pull'
+        if args.no_cache:
+            cmd += ' --no-cache'
+        cmd += ' -t braintwister/' + image_name
+        if base != '':
+            cmd += ' --build-arg BASE_IMAGE=braintwister/' + base
+        cmd += ' .'
 
-            if args.verbose > 1:
-                print('Build command: ' + cmd)
+        if args.verbose > 1:
+            print('Build command: ' + cmd)
 
-            p = subprocess.Popen(cmd, shell=True, cwd=module, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        p = subprocess.Popen(cmd, shell=True, cwd=module, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
-            build_log = ''
-            while p.poll() is None:
-                line = p.stdout.readline().decode('ascii', 'backslashreplace')
-                if args.verbose > 1:
-                    print(line, end='')
-                else:
-                    build_log += line
+        build_log = ''
+        while p.poll() is None:
             line = p.stdout.readline().decode('ascii', 'backslashreplace')
             if args.verbose > 1:
                 print(line, end='')
             else:
                 build_log += line
+        line = p.stdout.readline().decode('ascii', 'backslashreplace')
+        if args.verbose > 1:
+            print(line, end='')
+        else:
+            build_log += line
 
-            if p.returncode == 0:
-                if args.verbose == 1:
-                    print(' passed')
-                elif args.verbose > 1:
-                    print('Build successful')
+        if p.returncode == 0:
+            if args.verbose == 1:
+                print(' passed')
+            elif args.verbose > 1:
+                print('Build successful')
 
-                if docker_push == True:
+            if docker_push == True:
 
-                    cmd = 'docker push braintwister/' + image_name
+                cmd = 'docker push braintwister/' + image_name
 
-                    if args.verbose > 1:
-                        print('Push command: ' + cmd)
+                if args.verbose > 1:
+                    print('Push command: ' + cmd)
 
-                    p2 = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                p2 = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
-                    if p2.returncode == 0:
-                        print('Push sucessful')
-                    else:
-                        print('Push failed')
-                        failed = True
-            else:
-                print('Build failed')
-                if args.verbose <= 1:
-                    print(build_log)
-                failed = True
+                if p2.returncode == 0:
+                    print('Push sucessful')
+                else:
+                    print('Push failed')
+                    failed = True
+        else:
+            print('Build failed')
+            if args.verbose <= 1:
+                print(build_log)
+            failed = True
     return failed
 
 def main():
@@ -96,7 +127,8 @@ def main():
     parser.add_argument('--pull', action="store_true", help='Always attempt to pull a newer version of the image')
 
     args = parser.parse_args()
-    image_list = yaml.load(open(args.images, 'r'));
+    image_list = make_image_list(yaml.load(open(args.images, 'r')));
+    print(image_list)
 
     docker_push = bool(args.user) and bool(args.password)
 
@@ -107,9 +139,7 @@ def main():
         cmd = 'echo \'' + args.password + '\'' + ' | docker login -u ' + args.user + ' --password-stdin'
         subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
-    failed = False
-    failed |= build_images('base-images', image_list=image_list, args=args, docker_push=docker_push)
-    failed |= build_images('images', image_list=image_list, args=args, docker_push=docker_push)
+    failed = build_images(image_list, args, docker_push)
 
     # Log out from docker registry
     if docker_push == True:
