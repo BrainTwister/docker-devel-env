@@ -58,7 +58,7 @@ def build_images(image_list, args, docker_push):
         elif args.verbose > 1:
             print('Build ' + image_name)
 
-        base   = '-'.join(image[:-1])
+        base   = '-'.join(image[:-1]) + ':' + IMAGE_VERSION
         module = image[-1:][0] 
 
         cmd = 'docker build'
@@ -67,7 +67,7 @@ def build_images(image_list, args, docker_push):
         if args.no_cache:
             cmd += ' --no-cache'
         cmd += ' -t braintwister/' + image_name
-        if base != '':
+        if len(image) > 1:
             cmd += ' --build-arg BASE_IMAGE=braintwister/' + base
         cmd += ' .'
 
