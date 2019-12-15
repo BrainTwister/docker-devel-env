@@ -32,11 +32,15 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+RUN update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 \
+ && update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
-RUN pip3 install --upgrade pip \
+RUN pip install --upgrade pip \
  && hash -r pip3 \
- && pip3 install -I pyyaml~=3.12 
+ && pip install \
+    cmake==3.15.3 \
+    conan==1.21.0 \
+    pyyaml==5.2
 
 # Set aliases
 COPY aliases /tmp/

@@ -18,6 +18,17 @@ then
   # Set python local user path
   export PATH=$PATH:/home/$USER_NAME/.local/bin
 
+  # Git settings
+  git config --global user.name "$GIT_USER_NAME"
+  git config --global user.email "$GIT_USER_EMAIL"
+  git config --global credential.helper 'cache --timeout=3600'
+
+  # Conan settings
+  chroot --userspec=$USER_NAME / \
+    conan remote add braintwister https://api.bintray.com/conan/braintwister/conan
+    conan remote add conan-community https://api.bintray.com/conan/conan-community/conan
+    conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+
   # Execute entrypoint modules
   if [ -d "/entrypoint.d" ]; then
     for f in /entrypoint.d/*.sh; do
