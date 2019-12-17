@@ -17,7 +17,7 @@ import yaml
 IMAGE_VERSION = '0.1'
 
 def make_image_list(yaml_image_list):
-    ''' Generate all combinations of modules '''
+    ''' Generate all combinations of modules and add base images '''
 
     # Change single modules into list
     for e in yaml_image_list:
@@ -28,18 +28,11 @@ def make_image_list(yaml_image_list):
     for e in yaml_image_list:
         if len(e) > 1: yaml_image_list.append(e[:-1])
 
-    print("1:")
-    for e in yaml_image_list:
-        print(e)
-
     # Sort and remove duplicates
     yaml_image_list.sort()
     yaml_image_list = list(yaml_image_list for yaml_image_list,_ in itertools.groupby(yaml_image_list))
 
-    print("2:")
-    for e in yaml_image_list:
-        print(e)
-
+    # Generate all combinations
     image_list = list()
     for e in yaml_image_list:
         image_list.extend(list(itertools.product(*e)))
@@ -48,6 +41,7 @@ def make_image_list(yaml_image_list):
 
 
 def build_images(image_list, args, docker_push):
+    ''' Build and push images '''
 
     failed = False
     for image in image_list:
@@ -128,7 +122,11 @@ def main():
 
     args = parser.parse_args()
     image_list = make_image_list(yaml.load(open(args.images, 'r')));
-    print(image_list)
+    if args.verbose > 1:
+        print('List of images to build:')
+        for image in image_list:
+            print('-'.join(image) + ':' + IMAGE_VERSION)
+        print()
 
     docker_push = bool(args.user) and bool(args.password)
 
