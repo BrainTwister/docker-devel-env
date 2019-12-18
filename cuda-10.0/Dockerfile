@@ -54,7 +54,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         cuda-minimal-build-$CUDA_PKG_VERSION \
         cuda-command-line-tools-$CUDA_PKG_VERSION \
         cuda-visual-tools-$CUDA_PKG_VERSION \
-        libnccl-dev=$NCCL_VERSION-2+cuda10.0 && \
-    rm -rf /var/lib/apt/lists/*
+        libcudnn7 \
+        libcudnn7-dev \
+        libnccl-dev=$NCCL_VERSION-2+cuda10.0  \
+ && rm -rf /var/lib/apt/lists/*
 
 ENV LIBRARY_PATH /usr/local/cuda/lib64/stubs:${LIBRARY_PATH}
