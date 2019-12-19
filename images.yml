@@ -1,5 +1,5 @@
 ---
  - ['ubuntu-18.04', 'docker-18.09']
  - ['ubuntu-18.04', ['gcc-5', 'gcc-9', 'clang-6', 'clang-9'], ['eclipse-cpp-2019-12', 'vscode-1.41']]
- - ['ubuntu-18.04', 'cuda-10.2', ['gcc-5', 'gcc-9', 'clang-6', 'clang-9'], ['eclipse-cpp-2019-12', 'vscode-1.41']]
+ - ['ubuntu-18.04', 'cuda-10.2', ['gcc-5', 'gcc-9', 'clang-6', 'clang-8'], ['eclipse-cpp-2019-12', 'vscode-1.41']]
  - ['ubuntu-18.04', 'cuda-10.0', 'vscode-1.41']
