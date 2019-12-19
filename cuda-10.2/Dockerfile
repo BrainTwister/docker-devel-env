@@ -34,12 +34,21 @@ ENV NCCL_VERSION 2.5.6
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
+        cuda-command-line-tools-$CUDA_PKG_VERSION \
         cuda-libraries-$CUDA_PKG_VERSION \
+        cuda-libraries-dev-$CUDA_PKG_VERSION \
+        cuda-minimal-build-$CUDA_PKG_VERSION \
+        cuda-nvml-dev-$CUDA_PKG_VERSION \
         cuda-nvtx-$CUDA_PKG_VERSION \
+        cuda-visual-tools-$CUDA_PKG_VERSION \
+        libcublas-dev=10.2.2.89-1 \
         libcublas10=10.2.2.89-1 \
+        libnccl-dev=$NCCL_VERSION-1+cuda10.2 \
         libnccl2=$NCCL_VERSION-1+cuda10.2 \
  && apt-mark hold libnccl2 \
  && rm -rf /var/lib/apt/lists/*
+
+ENV LIBRARY_PATH /usr/local/cuda/lib64/stubs:${LIBRARY_PATH}
 
 ENV CUDNN_VERSION 7.6.5.32
 LABEL com.nvidia.cudnn.version="${CUDNN_VERSION}"
