@@ -11,7 +11,7 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-ENV DOWNLOAD_URL http://download.eclipse.org/technology/epp/downloads/release/2019-06/R/eclipse-cpp-2019-06-R-linux-gtk-x86_64.tar.gz
+ENV DOWNLOAD_URL http://download.eclipse.org/technology/epp/downloads/release/2019-12/R/eclipse-cpp-2019-12-R-linux-gtk-x86_64.tar.gz
 ENV INSTALLATION_DIR /usr/local
 
 RUN curl -L "$DOWNLOAD_URL" | tar xz -C $INSTALLATION_DIR
