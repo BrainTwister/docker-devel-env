@@ -4,7 +4,7 @@ FROM $BASE_IMAGE
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
 ARG BAZEL_VERSION=0.25.2
-ARG TENSORFLOW_VERSION=2.0.0-beta1
+ARG TENSORFLOW_VERSION=2.0.0
 
 RUN ln -snf /usr/bin/python3 /usr/bin/python
 
@@ -40,10 +40,10 @@ SHELL ["/bin/bash", "-c"]
 RUN source /usr/local/lib/bazel/bin/bazel-complete.bash
 
 ENV TF_NEED_CUDA=1 \
-    TF_CUDA_VERSION=10.1
+    TF_CUDA_VERSION=10.2
 
 # Hack to find cuda 10.1 libraries
-RUN ln -s /usr/lib/x86_64-linux-gnu/libcublas.so.10 /usr/local/cuda-10.1/lib64/libcublas.so.10
+RUN ln -s /usr/lib/x86_64-linux-gnu/libcublas.so.10 /usr/local/cuda-10.2/lib64/libcublas.so.10
 
 RUN git clone https://github.com/tensorflow/tensorflow \
  && cd tensorflow \
