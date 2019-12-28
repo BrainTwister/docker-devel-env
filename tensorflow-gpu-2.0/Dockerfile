@@ -40,10 +40,11 @@ SHELL ["/bin/bash", "-c"]
 RUN source /usr/local/lib/bazel/bin/bazel-complete.bash
 
 ENV TF_NEED_CUDA=1 \
-    TF_CUDA_VERSION=10.2
+    TF_CUDA_VERSION=${CUDA_VERSION%.*} \
+    TF_CUDNN_VERSION=${CUDNN_VERSION%.*.*}
 
-# Hack to find cuda 10.1 libraries
-RUN ln -s /usr/lib/x86_64-linux-gnu/libcublas.so.10 /usr/local/cuda-10.2/lib64/libcublas.so.10
+# Hack to find cuda libraries
+RUN ln -s /usr/lib/x86_64-linux-gnu/libcublas.so.10 /usr/local/cuda/lib64/libcublas.so.10
 
 RUN git clone https://github.com/tensorflow/tensorflow \
  && cd tensorflow \
