@@ -266,13 +266,13 @@ open-source framework [TensorFlow](https://github.com/tensorflow/tensorflow)
 using the latest cuda development drivers.
 
 Although the usage of GPUs is highly recommended
-`braintwister/ubuntu-18.04-cuda-10.2-tensorflow-gpu-2.0`, a CPU version is
+`braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-2.0`, a CPU version is
 also available `braintwister/ubuntu-18.04-tensorflow-2.0`.
 
 Start a plain container with
 
 ```bash
-docker run -it --runtime=nvidia braintwister/ubuntu-18.04-cuda-10.2-tensorflow-gpu-2.0
+docker run -it --runtime=nvidia braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-2.0
 ```
 
 [TensorBoard](https://www.tensorflow.org/guide/summaries_and_tensorboard)
@@ -287,7 +287,7 @@ must be executed on the host before starting the container.
 
 ```bash
 docker run -d --runtime=nvidia -e DISPLAY \
-  braintwister/ubuntu-18.04-cuda-10.2-tensorflow-gpu-2.0-vscode-1.41
+  braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-2.0-vscode-1.41
 ```
 
 
@@ -297,7 +297,7 @@ Start the container with
 
 ```bash
 docker run --runtime=nvidia -p 8888:8888 \
-  braintwister/ubuntu-18.04-cuda-10.2-tensorflow-gpu-2.0-jupyter-1.0
+  braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-2.0-jupyter-1.0
 ```
 
 and open localhost:8888 on your host browser.

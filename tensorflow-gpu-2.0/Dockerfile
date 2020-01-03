@@ -39,9 +39,9 @@ RUN wget -q https://github.com/bazelbuild/bazel/releases/download/$BAZEL_VERSION
 SHELL ["/bin/bash", "-c"]
 RUN source /usr/local/lib/bazel/bin/bazel-complete.bash
 
-ENV TF_NEED_CUDA=1 \
-    TF_CUDA_VERSION=${CUDA_VERSION%.*} \
-    TF_CUDNN_VERSION=${CUDNN_VERSION%.*.*}
+ENV TF_NEED_CUDA=1
+#    TF_CUDA_VERSION=${CUDA_VERSION%.*} \
+#    TF_CUDNN_VERSION=${CUDNN_VERSION%.*.*}
 
 # Hack to find cuda libraries
 RUN ln -s /usr/lib/x86_64-linux-gnu/libcublas.so.10 /usr/local/cuda/lib64/libcublas.so.10

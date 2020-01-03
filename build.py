@@ -121,7 +121,7 @@ def main():
     parser.add_argument('--pull', action="store_true", help='Always attempt to pull a newer version of the image')
 
     args = parser.parse_args()
-    image_list = make_image_list(yaml.load(open(args.images, 'r')));
+    image_list = make_image_list(yaml.load(open(args.images, 'r'), Loader=yaml.FullLoader));
     if args.verbose > 1:
         print('List of images to build:')
         for image in image_list:
