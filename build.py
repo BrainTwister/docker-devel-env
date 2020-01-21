@@ -46,13 +46,14 @@ def build_images(image_list, args, docker_push):
     failed = False
     for image in image_list:
 
-        image_name = '-'.join(image) + ':' + IMAGE_VERSION
+        image_name = '-'.join(image)
+        image_name_version = image_name + ':' + IMAGE_VERSION
         if args.verbose == 1:
-            print(image_name.ljust(90), end='', flush=True)
+            print(image_name_version.ljust(90), end='', flush=True)
         elif args.verbose > 1:
-            print('Build ' + image_name)
+            print('Build ' + image_name_version)
 
-        base   = '-'.join(image[:-1]) + ':' + IMAGE_VERSION
+        image_base_version = '-'.join(image[:-1]) + ':' + IMAGE_VERSION
         module = image[-1:][0] 
 
         cmd = 'docker build'
@@ -60,9 +61,9 @@ def build_images(image_list, args, docker_push):
             cmd += ' --pull'
         if args.no_cache:
             cmd += ' --no-cache'
-        cmd += ' -t braintwister/' + image_name
+        cmd += ' -t braintwister/' + image_name_version
         if len(image) > 1:
-            cmd += ' --build-arg BASE_IMAGE=braintwister/' + base
+            cmd += ' --build-arg BASE_IMAGE=braintwister/' + image_base_version
         cmd += ' .'
 
         if args.verbose > 1:
@@ -88,26 +89,25 @@ def build_images(image_list, args, docker_push):
                 print(' passed')
             elif args.verbose > 1:
                 print('Build successful')
-
-            if docker_push == True:
-
-                cmd = 'docker push braintwister/' + image_name
-
-                if args.verbose > 1:
-                    print('Push command: ' + cmd)
-
-                p2 = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-
-                if p2.returncode == 0:
-                    print('Push sucessful')
-                else:
-                    print('Push failed')
-                    failed = True
         else:
-            print('Build failed')
-            if args.verbose <= 1:
-                print(build_log)
             failed = True
+            if args.verbose == 1:
+                print(' failed')
+            elif args.verbose > 1:
+                print('Build failed')
+                print(build_log)
+            continue
+
+        # Tag latest version
+        subprocess.run('docker tag braintwister/' + image_name_version + ' braintwister/' + image_name,
+            shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+        if docker_push == True:
+            subprocess.run('docker push braintwister/' + image_name_version,
+                shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+            subprocess.run('docker push braintwister/' + image_name,
+                shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
     return failed
 
 def main():
