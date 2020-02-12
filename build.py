@@ -14,7 +14,7 @@ import subprocess
 import sys
 import yaml
 
-IMAGE_VERSION = '0.1'
+IMAGE_VERSION = '0.2'
 
 def make_image_list(yaml_image_list):
     ''' Generate all combinations of modules and add base images '''
@@ -98,15 +98,18 @@ def build_images(image_list, args, docker_push):
                 print(build_log)
             continue
 
-        # Tag latest version
-        subprocess.run('docker tag braintwister/' + image_name_version + ' braintwister/' + image_name,
-            shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-
+        # Push to DockerHub
         if docker_push == True:
             subprocess.run('docker push braintwister/' + image_name_version,
                 shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-            subprocess.run('docker push braintwister/' + image_name,
+
+        # Tag latest version
+        if args.latest:
+            subprocess.run('docker tag braintwister/' + image_name_version + ' braintwister/' + image_name,
                 shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+            if docker_push == True:
+                subprocess.run('docker push braintwister/' + image_name,
+                    shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
     return failed
 
@@ -119,6 +122,7 @@ def main():
     parser.add_argument('-p', '--password', help='Password for docker repository')
     parser.add_argument('--no-cache', action="store_true", help='Do not use cache when building the image')
     parser.add_argument('--pull', action="store_true", help='Always attempt to pull a newer version of the image')
+    parser.add_argument('--latest', action="store_true", help='Tag the images as latest version')
 
     args = parser.parse_args()
     image_list = make_image_list(yaml.load(open(args.images, 'r'), Loader=yaml.FullLoader));
