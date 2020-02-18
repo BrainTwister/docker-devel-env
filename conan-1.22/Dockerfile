@@ -3,7 +3,7 @@ FROM $BASE_IMAGE
 
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
-ARG VERSION=1.21
+ARG VERSION=1.22
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
