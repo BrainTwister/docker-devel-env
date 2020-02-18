@@ -4,7 +4,7 @@ pipeline {
 
   agent {
     docker {
-      image 'braintwister/ubuntu-18.04-docker-18.09:0.1'
+      image 'braintwister/ubuntu-18.04-docker-18.09'
       args '-u root -v /var/run/docker.sock:/var/run/docker.sock -e DOCKER_CONFIG=/tmp -e USER_ID=1000'
       alwaysPull true
     }
@@ -20,7 +20,7 @@ pipeline {
       steps {
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub',
                           usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-          sh './build.py -vv -u $USERNAME -p $PASSWORD'
+          sh './build.py --latest -vv -u $USERNAME -p $PASSWORD'
         }
       }
     }
