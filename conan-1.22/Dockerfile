@@ -3,7 +3,7 @@ FROM $BASE_IMAGE
 
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
-ARG VERSION=1.22
+ARG VERSION=1.22.3
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
@@ -13,7 +13,7 @@ RUN apt-get update \
 
 RUN pip3 install --upgrade pip \
  && hash -r pip3 \
- && pip3 install -I conan~=$VERSION
+ && pip3 install -I conan==$VERSION
 
 # Add entrypoint
 ADD conan_add_repositories.sh /entrypoint.d/
