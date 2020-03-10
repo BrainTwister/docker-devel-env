@@ -12,7 +12,6 @@ RUN wget -q -O - http://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
     clang-10 \
     clang-10-doc \
     clang-format-10 \
-    #clang-tools-10 \
     clangd-10 \
     libc++-10-dev \
     libc++abi-10-dev \
@@ -30,7 +29,7 @@ RUN wget -q -O - http://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
     llvm-10-doc \
     llvm-10-examples \
     llvm-10-runtime \
-    python-clang-10 \
+    python3-clang-10 \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
  && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-10 100 \
