@@ -1,7 +1,7 @@
 ---
  - ['ubuntu-18.04', 'docker-18.09']
- - ['ubuntu-18.04', ['gcc-5', 'gcc-8', 'clang-6', 'clang-8'], ['eclipse-cpp-2019-12', 'vscode-1.43']]
- - ['ubuntu-18.04', 'cuda-10.2', ['gcc-5', 'gcc-8', 'clang-6', 'clang-8'], ['eclipse-cpp-2019-12', 'vscode-1.43']]
+ - ['ubuntu-18.04', ['gcc-5', 'gcc-8', 'clang-6', 'clang-8'], ['eclipse-cpp-2020-03', 'vscode-1.43']]
+ - ['ubuntu-18.04', 'cuda-10.2', ['gcc-5', 'gcc-8', 'clang-6', 'clang-8'], ['eclipse-cpp-2020-03', 'vscode-1.43']]
  - ['ubuntu-18.04', 'cuda-10.2', 'gcc-8', 'clang-7', 'vscode-1.43']
  - ['ubuntu-18.04', 'gcc-8', 'clang-7', 'vscode-1.43']
  - ['ubuntu-18.04', 'cuda-10.2', 'gcc-8', 'clang-7', 'doxygen-1.8.5', 'vscode-1.43']
