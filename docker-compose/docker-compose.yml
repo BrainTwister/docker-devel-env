@@ -2,7 +2,7 @@ version: "2.3"
 services:
 
   vscode:
-    image: braintwister/ubuntu-18.04-cuda-10.2-gcc-8-clang-7-vscode-1.43:0.2
+    image: braintwister/ubuntu-20.04-cuda-10.2-gcc-8-clang-9-vscode-1.44
     runtime: nvidia
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -18,6 +18,7 @@ services:
     network_mode: host
     ports:
       - 6006:6006
+    privileged: true
 
 volumes:
   home:
