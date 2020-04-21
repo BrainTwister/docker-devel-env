@@ -4,7 +4,7 @@
 
 Fast, reproducible, and portable software development environments
 
-Copyright (C) 2019 Bernd Doser, <bernd.doser@braintwister.eu>
+Copyright (C) 2020 Bernd Doser, bernd.doser@braintwister.eu
 
 All rights reserved.
 
