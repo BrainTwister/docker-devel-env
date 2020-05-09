@@ -3,7 +3,7 @@ FROM $BASE_IMAGE
 
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
-ARG VERSION=1.44.2
+ARG VERSION=1.45.0
 
 ENV SHELL /bin/bash
 ENV DOWNLOAD_URL https://vscode-update.azurewebsites.net/$VERSION/linux-deb-x64/stable
