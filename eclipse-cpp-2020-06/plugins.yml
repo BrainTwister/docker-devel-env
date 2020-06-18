@@ -1,6 +1,6 @@
 ---
 general_repos:
- - http://download.eclipse.org/releases/2019-12/
+ - http://download.eclipse.org/releases/2020-06/
 
 install:
   BashEditor:
