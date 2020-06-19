@@ -9,3 +9,4 @@
  - ['ubuntu-18.04', 'cuda-10.1', 'tensorflow-gpu-2.0']
  - ['ubuntu-18.04', 'cuda-10.1', 'tensorflow-gpu-2.0', 'jupyter-1.0']
  - ['ubuntu-20.04', 'cuda-10.2', 'gcc-8', 'clang-9', 'vscode-1.46']
+ - ['ubuntu-20.04', 'cuda-devel-11.0', 'gcc-8', 'clang-9', 'vscode-1.46']
