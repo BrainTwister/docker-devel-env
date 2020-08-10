@@ -10,6 +10,7 @@ __license__ = "MIT"
 
 import argparse
 import itertools
+import os
 import subprocess
 import sys
 import yaml
@@ -56,6 +57,12 @@ def build_images(image_list, args, docker_push):
         image_base_version = '-'.join(image[:-1]) + ':' + IMAGE_VERSION
         module = image[-1:][0] 
 
+        module_version = ''
+        if not os.path.isdir(module):
+            module, module_version = module.split('-')
+            print(module)
+            print(module_version)
+
         cmd = 'docker build'
         if args.pull:
             cmd += ' --pull'
@@ -64,6 +71,8 @@ def build_images(image_list, args, docker_push):
         cmd += ' -t braintwister/' + image_name_version
         if len(image) > 1:
             cmd += ' --build-arg BASE_IMAGE=braintwister/' + image_base_version
+        if len(module_version) > 1:
+            cmd += ' --build-arg VERSION=' + module_version
         cmd += ' .'
 
         if args.verbose > 1:
