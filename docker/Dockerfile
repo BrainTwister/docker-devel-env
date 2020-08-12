@@ -3,6 +3,8 @@ FROM $BASE_IMAGE
 
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
+ARG VERSION
+
 RUN apt-get update \
  && apt-get install -y \
     apt-transport-https \
@@ -18,7 +20,7 @@ RUN add-apt-repository \
 
 RUN apt-get update \
  && apt-get install -y \
-    docker-ce=5:18.09.* \
+    docker-ce=5:$VERSION.* \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
