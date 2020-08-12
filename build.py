@@ -44,7 +44,7 @@ def make_image_list(yaml_image_list):
 def build_images(image_list, args, docker_push):
     ''' Build and push images '''
 
-    failed = False
+    build_status = []
     for image in image_list:
 
         image_name = '-'.join(image)
@@ -60,8 +60,6 @@ def build_images(image_list, args, docker_push):
         module_version = ''
         if not os.path.isdir(module):
             module, module_version = module.split('-')
-            print(module)
-            print(module_version)
 
         cmd = 'docker build'
         if args.pull:
@@ -71,7 +69,7 @@ def build_images(image_list, args, docker_push):
         cmd += ' -t braintwister/' + image_name_version
         if len(image) > 1:
             cmd += ' --build-arg BASE_IMAGE=braintwister/' + image_base_version
-        if len(module_version) > 1:
+        if len(module_version) > 0:
             cmd += ' --build-arg VERSION=' + module_version
         cmd += ' .'
 
@@ -94,16 +92,17 @@ def build_images(image_list, args, docker_push):
             build_log += line
 
         if p.returncode == 0:
+            build_status.append(True)
             if args.verbose == 1:
                 print(' passed')
             elif args.verbose > 1:
-                print('Build successful')
+                print('Build ' + image_name_version + ' successful')
         else:
-            failed = True
+            build_status.append(False)
             if args.verbose == 1:
                 print(' failed')
             elif args.verbose > 1:
-                print('Build failed')
+                print('Build ' + image_name_version + ' failed')
                 print(build_log)
             continue
 
@@ -120,7 +119,7 @@ def build_images(image_list, args, docker_push):
                 subprocess.run('docker push braintwister/' + image_name,
                     shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
-    return failed
+    return build_status
 
 def main():
 
@@ -150,7 +149,14 @@ def main():
         cmd = 'echo \'' + args.password + '\'' + ' | docker login -u ' + args.user + ' --password-stdin'
         subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
-    failed = build_images(image_list, args, docker_push)
+    build_status = build_images(image_list, args, docker_push)
+
+    # Print build status
+    if args.verbose > 1:
+        print('Build status:')
+        for image, status in zip(image_list, build_status):
+            print('-'.join(image) + ':' + IMAGE_VERSION + ' %s' % status)
+        print()
 
     # Log out from docker registry
     if docker_push == True:
@@ -159,7 +165,7 @@ def main():
         cmd = 'docker logout'
         subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
-    if failed == True:
+    if True in build_status:
         sys.exit(1)
 
 if __name__ == "__main__":
