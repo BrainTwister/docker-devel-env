@@ -15,7 +15,6 @@ RUN wget -q -O - http://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
     clang-$VERSION \
     clang-$VERSION-doc \
     clang-format-$VERSION \
-    clangd-$VERSION \
     libc++-$VERSION-dev \
     libc++abi-$VERSION-dev \
     libclang-$VERSION-dev \
@@ -31,9 +30,22 @@ RUN wget -q -O - http://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
     llvm-$VERSION-dev \
     llvm-$VERSION-doc \
     llvm-$VERSION-examples \
-    llvm-$VERSION-runtime \
-    python3-clang-$VERSION \
- && apt-get clean \
+    llvm-$VERSION-runtime
+
+RUN if [ "$VERSION" -gt "7" ] ; then \
+        apt-get install -y --no-install-recommends \
+        clangd-$VERSION ; \
+    fi
+
+RUN if [ "$VERSION" -gt "9" ] ; then \
+        apt-get install -y --no-install-recommends \
+        python3-clang-$VERSION ; \
+    else \
+        apt-get install -y --no-install-recommends \
+        python-clang-$VERSION ; \
+    fi
+
+RUN apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
  && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-$VERSION 100 \
  && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-$VERSION 100
