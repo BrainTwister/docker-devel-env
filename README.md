@@ -31,11 +31,11 @@ a chain:
 
 The image `module1-module2-module3` is using the image `module1-module2` as
 base, which will be set using the build-time variable `BASE_IMAGE`. For
-example the image `ubuntu-18.04-clang-9` will be build with
+example the image `ubuntu-20.04-clang-11` will be build with
 
 ```bash
-cd clang-9
-docker build -t braintwister/ubuntu-18.04-clang-9 --build-arg BASE_IMAGE=braintwister/ubuntu-18.04 .
+cd clang-11
+docker build -t braintwister/ubuntu-20.04-clang-11 --build-arg BASE_IMAGE=braintwister/ubuntu-20.04 .
 ```
 
 Please find a list of available images at [images.yml](images.yml).
@@ -64,7 +64,7 @@ installed can be started by
 
 ```bash
 docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY --privileged \
-  braintwister/ubuntu-18.04-clang-9-eclipse-cpp-2020-06
+  braintwister/ubuntu-20.04-clang-11-eclipse-cpp-2020-06
 ```
 
 or using docker-compose by
@@ -74,7 +74,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-18.04-clang-9-eclipse-cpp-2020-06
+    image: braintwister/ubuntu-20.04-clang-11-eclipse-cpp-2020-06
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
     environment:
@@ -108,7 +108,7 @@ version: "2.3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-18.04-cuda-10.2-clang-8-nsight
+    image: braintwister/ubuntu-20.04-cuda-devel-11.0-clang-9-nsight
     runtime: nvidia
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
@@ -129,7 +129,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-18.04-clang-9-eclipse-cpp-2020-06
+    image: braintwister/ubuntu-20.04-clang-11-eclipse-cpp-2020-06
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
       - /dev/ttyACM0:/dev/ttyACM0
@@ -144,7 +144,7 @@ The Visual Studio Code IDE can be started by using
 
 ```bash
 docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY --privileged \
-  braintwister/ubuntu-18.04-clang-9-vscode-1.46
+  braintwister/ubuntu-20.04-clang-11-vscode-1.47.3
 ```
 
 
@@ -159,7 +159,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-18.04-clang-9-eclipse-cpp-2020-06
+    image: braintwister/ubuntu-20.04-clang-11-eclipse-cpp-2020-06
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro 
       - home:/home/user
@@ -191,7 +191,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-18.04-clang-9-eclipse-cpp-2020-06
+    image: braintwister/ubuntu-20.04-clang-11-vscode-1.47.3
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro 
       - home:/home/${USER_NAME}
@@ -230,7 +230,7 @@ pipeline {
 
   agent {
     docker {
-      image 'braintwister/ubuntu-18.04-clang-9'
+      image 'braintwister/ubuntu-20.04-clang-11'
     }
   }
 
@@ -266,13 +266,13 @@ open-source framework [TensorFlow](https://github.com/tensorflow/tensorflow)
 using the latest cuda development drivers.
 
 Although the usage of GPUs is highly recommended
-`braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-2.0`, a CPU version is
-also available `braintwister/ubuntu-18.04-tensorflow-2.0`.
+`braintwister/ubuntu-20.04-cuda-devel-11.0-tensorflow-gpu-2.0`, a CPU version is
+also available `braintwister/ubuntu-20.04-tensorflow-2.0`.
 
 Start a plain container with
 
 ```bash
-docker run -it --runtime=nvidia braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-2.0
+docker run -it --runtime=nvidia braintwister/ubuntu-20.04-cuda-devel-11.0-tensorflow-gpu-2.0
 ```
 
 [TensorBoard](https://www.tensorflow.org/guide/summaries_and_tensorboard)
@@ -287,7 +287,7 @@ must be executed on the host before starting the container.
 
 ```bash
 docker run -d --runtime=nvidia -e DISPLAY \
-  braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-2.0-vscode-1.46
+  braintwister/ubuntu-20.04-cuda-devel-11.0-tensorflow-gpu-2.0-vscode-1.47.3
 ```
 
 
@@ -297,7 +297,7 @@ Start the container with
 
 ```bash
 docker run --runtime=nvidia -p 8888:8888 \
-  braintwister/ubuntu-18.04-cuda-10.1-tensorflow-gpu-2.0-jupyter-1.0
+  braintwister/ubuntu-20.04-cuda-devel-11.0-tensorflow-gpu-2.0-jupyter-1.0
 ```
 
 and open localhost:8888 on your host browser.
