@@ -166,7 +166,7 @@ def main():
         cmd = 'docker logout'
         subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
-    if True in build_status:
+    if False in build_status:
         sys.exit(1)
 
 if __name__ == "__main__":
