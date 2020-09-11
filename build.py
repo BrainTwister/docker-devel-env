@@ -157,7 +157,7 @@ def main():
         for image, status in zip(image_list, build_status):
             print('-'.join(image) + ':' + IMAGE_VERSION + ' %s' % status)
         print()
-    print(str(build_status.count(True)) + ' of ' + str(len(build_status)) + ' images successfully builded.')
+    print(str(build_status.count(True)) + ' of ' + str(len(build_status)) + ' images successfully built.')
 
     # Log out from docker registry
     if docker_push == True:
