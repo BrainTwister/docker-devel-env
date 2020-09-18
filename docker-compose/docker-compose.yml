@@ -2,7 +2,7 @@ version: "2.3"
 services:
 
   vscode:
-    image: braintwister/ubuntu-18.04-cuda-10.2-gcc-8-clang-7-vscode-1.49.0-doxygen-1.8.5:0.4
+    image: braintwister/ubuntu-20.04-cuda-devel-11.0-gcc-9-clang-9-vscode-1.49.1:0.4
     runtime: nvidia
     volumes:
       - /etc/localtime:/etc/localtime:ro
