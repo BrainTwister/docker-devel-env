@@ -48,7 +48,7 @@ RUN pip install --upgrade pip \
  && hash -r pip3 \
  && pip install \
     cmake==3.18.2 \
-    conan==1.29.1 \
+    conan==1.29.2 \
     pyyaml==5.3.1
 
 # Set aliases
