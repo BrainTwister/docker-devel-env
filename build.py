@@ -57,7 +57,7 @@ def build_images(image_list, args, docker_push):
         image_base_version = '-'.join(image[:-1]) + ':' + IMAGE_VERSION
         module = image[-1:][0] 
 
-        module_name, module_version = module.split('-')
+        module_name, module_version = module.rsplit('-', 1)
         module_path = module
         if not os.path.isdir(module_path):
             module_path = module_name
