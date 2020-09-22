@@ -11,12 +11,9 @@ ENV DOWNLOAD_URL https://vscode-update.azurewebsites.net/$VERSION/linux-deb-x64/
 RUN wget -q "$DOWNLOAD_URL" -O code.deb
 
 RUN apt-get update \
- && apt-get install -y --no-install-recommends \
+ && apt-get install -y \
     firefox \
-    libasound2 \
-    libgtk-3-0 \
-    libxtst6 \
-    libx11-xcb-dev \
+    libxcb-dri3-0 \
     ./code.deb \
  && apt-get clean \
  && rm ./code.deb \
