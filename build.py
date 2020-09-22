@@ -57,9 +57,12 @@ def build_images(image_list, args, docker_push):
         image_base_version = '-'.join(image[:-1]) + ':' + IMAGE_VERSION
         module = image[-1:][0] 
 
-        module_version = ''
-        if not os.path.isdir(module):
-            module, module_version = module.split('-')
+        module_name, module_version = module.split('-')
+        module_path = module
+        if not os.path.isdir(module_path):
+            module_path = module_name
+        if not os.path.isdir(module_path):
+            raise Exception("Wrong module_path")
 
         cmd = 'docker build'
         if args.pull:
@@ -67,16 +70,15 @@ def build_images(image_list, args, docker_push):
         if args.no_cache:
             cmd += ' --no-cache'
         cmd += ' -t braintwister/' + image_name_version
+        cmd += ' --build-arg VERSION=' + module_version
         if len(image) > 1:
             cmd += ' --build-arg BASE_IMAGE=braintwister/' + image_base_version
-        if len(module_version) > 0:
-            cmd += ' --build-arg VERSION=' + module_version
         cmd += ' .'
 
         if args.verbose > 1:
             print('Build command: ' + cmd)
 
-        p = subprocess.Popen(cmd, shell=True, cwd=module, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        p = subprocess.Popen(cmd, shell=True, cwd=module_path, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
         build_log = ''
         while p.poll() is None:
