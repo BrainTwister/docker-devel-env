@@ -13,6 +13,8 @@ RUN wget -q "$DOWNLOAD_URL" -O code.deb
 RUN apt-get update \
  && apt-get install -y \
     firefox \
+    libdrm2 \
+    libgbm1 \
     libxcb-dri3-0 \
     ./code.deb \
  && apt-get clean \
@@ -21,4 +23,4 @@ RUN apt-get update \
 
 ADD keep_running.sh /postprocess.d/
 
-CMD ["code"]
+CMD ["code", "--no-xshm"]
