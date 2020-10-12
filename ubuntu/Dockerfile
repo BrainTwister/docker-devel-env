@@ -30,6 +30,7 @@ RUN apt-get update \
     python3-setuptools \
     python3-tk \
     software-properties-common \
+    sudo \
     vim \
     wget
 
