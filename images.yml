@@ -1,18 +1,18 @@
 ---
  - ['ubuntu-20.04', ['gcc-7', 'gcc-8', 'gcc-9', 'gcc-10', 'clang-9', 'clang-10', 'clang-11']]
- - ['ubuntu-20.04', ['gcc-10', 'clang-9', 'clang-11'], ['eclipse-cpp-2020-09', 'vscode-1.54.1']]
+ - ['ubuntu-20.04', ['gcc-10', 'clang-9', 'clang-11'], ['eclipse-cpp-2020-09', 'vscode-1.56.2']]
 
  - ['ubuntu-20.04', 'cuda-devel-11.0', ['gcc-7', 'gcc-8', 'gcc-9', 'gcc-10', 'clang-9', 'clang-10', 'clang-11']]
- - ['ubuntu-20.04', 'cuda-devel-11.0', ['gcc-9', 'clang-9'], ['eclipse-cpp-2020-09', 'vscode-1.54.1']]
+ - ['ubuntu-20.04', 'cuda-devel-11.0', ['gcc-9', 'clang-9'], ['eclipse-cpp-2020-09', 'vscode-1.56.2']]
 
- - ['ubuntu-20.04', 'gcc-10', 'clang-11', 'vscode-1.54.1']
- - ['ubuntu-20.04', 'cuda-devel-11.0', 'gcc-9', 'clang-9', 'vscode-1.54.1']
+ - ['ubuntu-20.04', 'gcc-10', 'clang-11', 'vscode-1.56.2']
+ - ['ubuntu-20.04', 'cuda-devel-11.0', 'gcc-9', 'clang-9', 'vscode-1.56.2']
 
- - ['ubuntu-20.04', 'cuda-devel-11.0', 'gcc-8', 'clang-9', 'doxygen-1.8.5', 'vscode-1.54.1']
+ - ['ubuntu-20.04', 'cuda-devel-11.0', 'gcc-8', 'clang-9', 'doxygen-1.8.5', 'vscode-1.56.2']
  - ['ubuntu-20.04', 'cuda-devel-11.0', 'gcc-8', 'doxygen-1.8.13']
 
  - ['ubuntu-20.04', 'docker-19.03']
  - ['ubuntu-18.04', 'docker-18.09']
 
  - ['ubuntu-18.04', ['gcc-5', 'gcc-6', 'clang-5.0']]
- - ['ubuntu-18.04', 'cuda-10.2', 'gcc-8', 'clang-7', 'vscode-1.54.1', 'doxygen-1.8.5']
+ - ['ubuntu-18.04', 'cuda-10.2', 'gcc-8', 'clang-7', 'vscode-1.56.2', 'doxygen-1.8.5']
