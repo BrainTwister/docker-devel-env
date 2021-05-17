@@ -6,7 +6,7 @@ LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 ARG VERSION
 
 ENV SHELL /bin/bash
-ENV DOWNLOAD_URL https://vscode-update.azurewebsites.net/$VERSION/linux-deb-x64/stable
+ENV DOWNLOAD_URL https://update.code.visualstudio.com/$VERSION/linux-deb-x64/stable
 
 RUN wget -q "$DOWNLOAD_URL" -O code.deb
 
