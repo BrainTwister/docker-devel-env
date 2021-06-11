@@ -5,6 +5,10 @@ LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
 ARG VERSION
 
+RUN pip install \
+    numpy \
+    scipy
+
 RUN apt-get update \
  && git clone https://github.com/adrianzap/softwipe.git \
  && cd softwipe \
