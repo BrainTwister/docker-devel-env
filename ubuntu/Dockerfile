@@ -48,9 +48,9 @@ RUN update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 \
 RUN pip install --upgrade pip \
  && hash -r pip3 \
  && pip install \
-    cmake==3.18.4 \
-    conan==1.33.1 \
-    pyyaml==5.3.1
+    cmake==3.20.2 \
+    conan==1.37.1 \
+    pyyaml==5.4.1
 
 # Set aliases
 COPY aliases /tmp/
