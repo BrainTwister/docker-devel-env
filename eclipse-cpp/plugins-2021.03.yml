@@ -1,14 +1,8 @@
 ---
 general_repos:
- - http://download.eclipse.org/releases/2020-06/
+ - http://download.eclipse.org/releases/2021-03/
 
 install:
-  BashEditor:
-   - repos:
-      - https://dl.bintray.com/de-jcup/basheditor/
-     units:
-      - de.jcup.basheditor.feature.group
-
   cmake4eclipse:
    - repos:
       - https://raw.githubusercontent.com/15knots/cmake4eclipse/master/releng/comp-update/
@@ -20,12 +14,6 @@ install:
       - https://raw.githubusercontent.com/15knots/cmakeed/master/cmakeed-update/
      units:
       - com.cthing.cmakeed.feature.feature.group
-
-  JenkinsEditor:
-   - repos:
-      - https://dl.bintray.com/de-jcup/jenkinseditor/
-     units:
-      - de.jcup.jenkinseditor.feature.feature.group
 
   JSONEditor:
    - repos:

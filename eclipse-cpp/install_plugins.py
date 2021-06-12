@@ -9,7 +9,7 @@ parser.add_argument('-p, --plugins', dest='plugins', default='plugins.yml',
     help='List of plugins to install (default: plugins.yml)')
 
 args = parser.parse_args()
-plugins = yaml.load(open(args.plugins, 'r')) or {};
+plugins = yaml.load(open(args.plugins, 'r'), Loader=yaml.FullLoader) or {};
 
 # Uninstall plugins
 if 'unistall' in plugins:

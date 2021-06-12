@@ -3,6 +3,8 @@ FROM $BASE_IMAGE
 
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
+ARG VERSION
+
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
     firefox \
@@ -11,14 +13,15 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-ENV DOWNLOAD_URL http://download.eclipse.org/technology/epp/downloads/release/2020-06/R/eclipse-cpp-2020-06-R-linux-gtk-x86_64.tar.gz
 ENV INSTALLATION_DIR /usr/local
 
-RUN curl -L "$DOWNLOAD_URL" | tar xz -C $INSTALLATION_DIR
+# Needed for string substitution
+SHELL ["/bin/bash", "-c"]
+RUN curl -L http://download.eclipse.org/technology/epp/downloads/release/${VERSION/./-}/R/eclipse-cpp-${VERSION/./-}-R-linux-gtk-x86_64.tar.gz | tar xz -C $INSTALLATION_DIR
 
 # Install plugins
-ADD install_plugins.py plugins.yml /config/
-RUN /config/install_plugins.py -p /config/plugins.yml
+ADD install_plugins.py plugins-$VERSION.yml /config/
+RUN /config/install_plugins.py -p /config/plugins-$VERSION.yml
 
 ADD entrypoint_eclipse.sh /entrypoint.d/
 

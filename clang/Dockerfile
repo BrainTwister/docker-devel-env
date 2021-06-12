@@ -4,7 +4,6 @@ FROM $BASE_IMAGE
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
 ARG VERSION
-#ARG MAJOR_VERSION="${VERSION%.*}"
 
 RUN wget -q -O - http://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
  && CODENAME=$(lsb_release -cs) \
