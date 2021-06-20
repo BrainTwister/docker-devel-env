@@ -16,6 +16,7 @@ RUN apt-get update \
     libdrm2 \
     libgbm1 \
     libxcb-dri3-0 \
+    libx11-xcb1 \
     ./code.deb \
  && apt-get clean \
  && rm ./code.deb \
