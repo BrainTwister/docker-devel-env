@@ -15,7 +15,7 @@ import subprocess
 import sys
 import yaml
 
-IMAGE_VERSION = '0.4'
+IMAGE_VERSION = '0.5'
 
 def make_image_list(yaml_image_list):
     ''' Generate all combinations of modules and add base images '''
