@@ -31,11 +31,11 @@ a chain:
 
 The image `module1-module2-module3` is using the image `module1-module2` as
 base, which will be set using the build-time variable `BASE_IMAGE`. For
-example the image `ubuntu-20.04-clang-11` will be build with
+example the image `ubuntu-20.04-clang-12` will be build with
 
 ```bash
-cd clang-11
-docker build -t braintwister/ubuntu-20.04-clang-11 --build-arg BASE_IMAGE=braintwister/ubuntu-20.04 .
+cd clang-12
+docker build -t braintwister/ubuntu-20.04-clang-12 --build-arg BASE_IMAGE=braintwister/ubuntu-20.04 .
 ```
 
 Please find a list of available images at [images.yml](images.yml).
@@ -64,7 +64,7 @@ installed can be started by
 
 ```bash
 docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY --privileged \
-  braintwister/ubuntu-20.04-clang-11-eclipse-cpp-2021.03
+  braintwister/ubuntu-20.04-clang-12-eclipse-cpp-2021.03
 ```
 
 or using docker-compose by
@@ -74,7 +74,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-20.04-clang-11-eclipse-cpp-2021.03
+    image: braintwister/ubuntu-20.04-clang-12-eclipse-cpp-2021.03
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
     environment:
@@ -108,7 +108,7 @@ version: "2.3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-20.04-cuda-devel-11.0-clang-9-nsight
+    image: braintwister/ubuntu-20.04-cuda-devel-11.3-clang-12-nsight
     runtime: nvidia
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
@@ -129,7 +129,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-20.04-clang-11-eclipse-cpp-2021.03
+    image: braintwister/ubuntu-20.04-clang-12-eclipse-cpp-2021.03
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
       - /dev/ttyACM0:/dev/ttyACM0
@@ -144,7 +144,7 @@ The Visual Studio Code IDE can be started by using
 
 ```bash
 docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY --privileged \
-  braintwister/ubuntu-20.04-clang-11-vscode-1.57.1
+  braintwister/ubuntu-20.04-clang-12-vscode-1.57.1
 ```
 
 
@@ -159,7 +159,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-20.04-clang-11-eclipse-cpp-2021.03
+    image: braintwister/ubuntu-20.04-clang-12-eclipse-cpp-2021.03
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro 
       - home:/home/user
@@ -191,7 +191,7 @@ version: "3"
 services:
 
   vscode:
-    image: braintwister/ubuntu-20.04-clang-11-vscode-1.57.1
+    image: braintwister/ubuntu-20.04-clang-12-vscode-1.57.1
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro 
       - home:/home/${USER_NAME}
@@ -230,7 +230,7 @@ pipeline {
 
   agent {
     docker {
-      image 'braintwister/ubuntu-20.04-clang-11'
+      image 'braintwister/ubuntu-20.04-clang-12'
     }
   }
 
