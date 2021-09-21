@@ -1,10 +1,10 @@
 ---
  - ['ubuntu-20.04', ['gcc-7', 'gcc-8', 'gcc-9', 'gcc-10', 'gcc-11', 'clang-9', 'clang-10', 'clang-11', 'clang-12']]
- - ['ubuntu-20.04', ['gcc-11', 'clang-12'], ['eclipse-cpp-2021.03', 'vscode-1.60.1']]
+ - ['ubuntu-20.04', ['gcc-11', 'clang-12'], ['eclipse-cpp-2021.09', 'vscode-1.60.1']]
  - ['ubuntu-20.04', 'gcc-11', 'clang-12', 'vscode-1.60.1']
 
  - ['cuda-devel-11.4.2', ['gcc-7', 'gcc-8', 'gcc-9', 'gcc-10', 'gcc-11', 'clang-9', 'clang-10', 'clang-11', 'clang-12']]
- - ['cuda-devel-11.4.2', ['gcc-9', 'clang-9'], ['eclipse-cpp-2021.03', 'vscode-1.60.1']]
+ - ['cuda-devel-11.4.2', ['gcc-9', 'clang-9'], ['eclipse-cpp-2021.09', 'vscode-1.60.1']]
  - ['cuda-devel-11.4.2', 'gcc-9', 'clang-9', 'vscode-1.60.1']
  - ['cuda-devel-11.4.2', 'gcc-8', 'clang-9', 'doxygen-1.8.5', 'vscode-1.60.1']
  - ['cuda-devel-11.4.2', 'gcc-8', 'doxygen-1.8.13']

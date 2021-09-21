@@ -64,7 +64,7 @@ installed can be started by
 
 ```bash
 docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY --privileged \
-  braintwister/ubuntu-20.04-clang-12-eclipse-cpp-2021.03
+  braintwister/ubuntu-20.04-clang-12-eclipse-cpp-2021.09
 ```
 
 or using docker-compose by
@@ -74,7 +74,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-20.04-clang-12-eclipse-cpp-2021.03
+    image: braintwister/ubuntu-20.04-clang-12-eclipse-cpp-2021.09
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
     environment:
@@ -129,7 +129,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-20.04-clang-12-eclipse-cpp-2021.03
+    image: braintwister/ubuntu-20.04-clang-12-eclipse-cpp-2021.09
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
       - /dev/ttyACM0:/dev/ttyACM0
@@ -159,7 +159,7 @@ version: "3"
 services:
 
   eclipse:
-    image: braintwister/ubuntu-20.04-clang-12-eclipse-cpp-2021.03
+    image: braintwister/ubuntu-20.04-clang-12-eclipse-cpp-2021.09
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro 
       - home:/home/user
