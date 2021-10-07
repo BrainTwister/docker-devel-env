@@ -25,7 +25,6 @@ RUN wget -q -O - http://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
     llvm-$VERSION \
     llvm-$VERSION-dev \
     llvm-$VERSION-doc \
-    llvm-$VERSION-examples \
     llvm-$VERSION-runtime
 
 RUN if [ "${VERSION%.*}" -gt "5" ] ; then \
