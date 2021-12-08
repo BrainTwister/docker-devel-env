@@ -24,10 +24,8 @@ then
   git config --global credential.helper 'cache --timeout=3600'
 
   # Conan settings
-  chroot --userspec=$USER_NAME / \
-    conan remote add braintwister https://api.bintray.com/conan/braintwister/conan
-    conan remote add conan-community https://api.bintray.com/conan/conan-community/conan
-    conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+  chroot --userspec=$USER_NAME /
+    conan remote add braintwister https://braintwister.jfrog.io/artifactory/api/conan/braintwister-conan
 
   # Execute entrypoint modules
   if [ -d "/entrypoint.d" ]; then
