@@ -26,7 +26,7 @@ RUN pip install --upgrade pip \
  && pip install \
     cmake==3.22.0 \
     conan==1.43.0 \
-    pyyaml==6.0
+    pyyaml==5.4.1
 
 # Set aliases
 COPY aliases /tmp/
